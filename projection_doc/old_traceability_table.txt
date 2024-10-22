@@ -1,0 +1,333 @@
+==Трассируемость функциональных требований==
+
+<table class="wikitable" border="2">
+<tr>
+    <th rowspan="2" colspan="2">Подсистемы и решения</th>
+    <th colspan="19">Функциональные требования</th>
+    <th colspan="5">Ограничения</th>
+</tr>
+<tr>
+    <th>Ф.Т. 1.1.1 Игрок может перемещаться между локациями в квартире посредством нажатия на дверь</th>
+    <th>Ф.Т. 1.1.2 Новая локация открывается, когда игрок собирает все обязательные предметы в текущей локации</th>
+    <th>Ф.Т. 1.1.3 При нажатии на дверь "Выход из квартиры" игра завершается</th>
+    <th>Ф.Т. 1.2.1 Игрок может собирать обязательные и необязательные предметы в каждой локации</th>
+    <th>Ф.Т. 1.2.2 Взятый игроком предмет добавляется в инвентарь</th>
+    <th>Ф.Т. 1.3.1 Взаимодействие игрока с функциональными предметами запускает мини игру</th>
+    <th>Ф.Т. 1.4.1 Игрок может открыть инвентарь с помощью соответствующей кнопки и просмотреть все собранные предметы и количество доступного места</th>
+    <th>Ф.Т. 1.5.1 Мини игры должны завершаться по истечению времени, отведенному на их прохождение</th>
+    <th>Ф.Т. 1.5.2 При успешном завершении мини игры игрок получает бонусный предмет</th>
+    <th>Ф.Т. 1.5.3 Игрок должен иметь возможность выйти из мини игры</th>
+    <th>Ф.Т. 1.6.1 По мере прохождения игры в каждой локации появляется информационный пузырь с сюжетным монологом, который рассказывает игроку о его главном или второстепенном квесте</th>
+    <th>Ф.Т. 2.1 Игрок может поставить игру на паузу</th>
+    <th>Ф.Т. 2.2 Игрок может выйти в главное меню нажав кнопку “в меню”</th>
+    <th>Ф.Т. 2.3 Игрок может продолжить игру нажав кнопку “продолжить”</th>
+    <th>Ф.Т. 2.4 Игрок может перезапустить игру нажав кнопку “перезапуск”</th>
+    <th>Ф.Т. 3.1 Игрок может выбирать уровни сложности</th>
+    <th>Ф.Т. 3.2 Игрок может изменить громкость звуков, двигая ползунок</th>
+    <th>Ф.Т. 3.3 Игрок может изменить громкость музыки, двигая ползунок</th>
+    <th>Ф.Т. 3.4 Игрок может сохранить выбранные настройки</th>
+
+    <th>О. 1.7 Интерфейс игры должен отображать время.</th>
+    <th>О. 1.12 Процесс игры сопровождается звуками и музыкой.</th>
+    <th>О. 2.1 Главное меню должно содержать кнопки: “выход” которая дает игроку возможность выйти из игры, “новая игра” которая дает игроку возможность начать игру, “настройки” которая дает игроку возможность открыть меню настроек.</th>
+    <th>О. 7.1 Игра завершается по истечению времени или при нажатии на дверь "Выход из квартиры".</th>
+    <th>О. 7.2 По завершению игры игроку доступна сюжетная концовка.</th>
+</tr>
+<tr>
+    <td colspan="2">GameHandler</td>
+    <td>DoorClicked(door)</td>
+    <td>TryToChangeRoom()</td>
+    <td>EndGame()</td>
+    <td>ItemClicked(item)</td>
+    <td>TryToPickUpItem(item),GetItem(item)</td>
+    <td>TryToPickUpItem(item),StartMiniGame(item,difficulty),FreezeMainTimer()</td>
+    <td>OpenInventory(),CloseInventory()</td>
+    <td>CloseMiniGame(),ContinueMainTimer()</td>
+    <td>GetItem(item)</td>
+    <td>CloseMiniGame()</td>
+    <td>ShowQuest()</td>
+    <td>PauseGame()</td>
+    <td>Load(MainMenuScene)</td>
+    <td>ResumeGame()</td>
+    <td>RestartGame()</td>
+    <td>-</td>
+    <td>-</td>
+    <td>-</td>
+    <td bgcolor="black"></td>
+    <td>StartMainTimer(),FreezeMainTimer()</td>
+    <td bgcolor="black"></td>
+    <td>Load(GameScene)</td>
+    <td>EndGame()</td>
+    <td>EndGame(),Load(GameOverScene)</td>
+</tr>
+<tr>
+    <td colspan="2">SettingsMenu</td>
+    <td bgcolor="black"></td>
+    <td bgcolor="black"></td>
+    <td bgcolor="black"></td>
+    <td bgcolor="black"></td>
+    <td bgcolor="black"></td>
+    <td bgcolor="black"></td>
+    <td bgcolor="black"></td>
+    <td bgcolor="black"></td>
+    <td bgcolor="black"></td>
+    <td bgcolor="black"></td>
+    <td bgcolor="black"></td>
+    <td bgcolor="black"></td>
+    <td bgcolor="black"></td>
+    <td bgcolor="black"></td>
+    <td bgcolor="black"></td>
+    <td>SetDifficulty()</td>
+    <td>SetSoundVolume()</td>
+    <td>SetMusicVolume()</td>
+    <td bgcolor="black"></td>
+    <td bgcolor="black"></td>
+    <td bgcolor="black"></td>
+    <td bgcolor="black"></td>
+    <td bgcolor="black"></td>
+    <td bgcolor="black"></td>
+</tr>
+<tr>
+    <td colspan="2">PauseMenu</td>
+    <td bgcolor="black"></td>
+    <td bgcolor="black"></td>
+    <td bgcolor="black"></td>
+    <td bgcolor="black"></td>
+    <td bgcolor="black"></td>
+    <td bgcolor="black"></td>
+    <td bgcolor="black"></td>
+    <td bgcolor="black"></td>
+    <td bgcolor="black"></td>
+    <td bgcolor="black"></td>
+    <td bgcolor="black"></td>
+    <td>ShowStatic(),Show()</td>
+    <td>Load(MainMenuScene)</td>
+    <td>HideStatic(),Hide()</td>
+    <td>Load(GameScene)</td>
+    <td bgcolor="black"></td>
+    <td bgcolor="black"></td>
+    <td bgcolor="black"></td>
+    <td bgcolor="black"></td>
+    <td bgcolor="black"></td>
+    <td bgcolor="black"></td>
+    <td bgcolor="black"></td>
+    <td bgcolor="black"></td>
+    <td bgcolor="black"></td>
+</tr>
+<tr>
+    <td colspan="2">MainMenu</td>
+    <td bgcolor="black"></td>
+    <td bgcolor="black"></td>
+    <td bgcolor="black"></td>
+    <td bgcolor="black"></td>
+    <td bgcolor="black"></td>
+    <td bgcolor="black"></td>
+    <td bgcolor="black"></td>
+    <td bgcolor="black"></td>
+    <td bgcolor="black"></td>
+    <td bgcolor="black"></td>
+    <td bgcolor="black"></td>
+    <td bgcolor="black"></td>
+    <td bgcolor="black"></td>
+    <td bgcolor="black"></td>
+    <td bgcolor="black"></td>
+    <td bgcolor="black"></td>
+    <td bgcolor="black"></td>
+    <td bgcolor="black"></td>
+    <td bgcolor="black"></td>
+    <td bgcolor="black"></td>
+    <td bgcolor="black"></td>
+    <td>ShowSub(settingsSub), ShowSub(mainSub)</td>
+    <td bgcolor="black"></td>
+    <td bgcolor="black"></td>
+</tr>
+<tr>
+    <td colspan="2">InventoryMenu</td>
+    <td bgcolor="gray"></td>
+    <td bgcolor="gray"></td>
+    <td bgcolor="gray"></td>
+    <td bgcolor="gray"></td>
+    <td bgcolor="gray"></td>
+    <td bgcolor="gray"></td>
+    <td bgcolor="gray"></td>
+    <td bgcolor="gray"></td>
+    <td bgcolor="gray"></td>
+    <td bgcolor="gray"></td>
+    <td bgcolor="gray"></td>
+    <td bgcolor="gray"></td>
+    <td bgcolor="gray"></td>
+    <td bgcolor="gray"></td>
+    <td bgcolor="gray"></td>
+    <td bgcolor="gray"></td>
+    <td bgcolor="gray"></td>
+    <td bgcolor="gray"></td>
+    <td bgcolor="gray"></td>
+    <td bgcolor="gray"></td>
+    <td bgcolor="gray"></td>
+    <td bgcolor="gray"></td>
+    <td bgcolor="gray"></td>
+    <td bgcolor="gray"></td>
+</tr>
+<tr>
+    <td colspan="2">GameAssets</td>
+    <td bgcolor="black"></td>
+    <td bgcolor="black"></td>
+    <td bgcolor="black"></td>
+    <td>spriteImageArray</td>
+    <td bgcolor="black"></td>
+    <td bgcolor="black"></td>
+    <td bgcolor="black"></td>
+    <td bgcolor="black"></td>
+    <td bgcolor="black"></td>
+    <td bgcolor="black"></td>
+    <td bgcolor="black"></td>
+    <td bgcolor="black"></td>
+    <td bgcolor="black"></td>
+    <td bgcolor="black"></td>
+    <td bgcolor="black"></td>
+    <td bgcolor="black"></td>
+    <td bgcolor="black"></td>
+    <td bgcolor="black"></td>
+    <td bgcolor="black"></td>
+    <td bgcolor="black"></td>
+    <td>soundAudioClipArray</td>
+    <td bgcolor="black"></td>
+    <td bgcolor="black"></td>
+    <td bgcolor="black"></td>
+</tr>
+<tr>
+    <td colspan="2">SoundManager</td>
+    <td bgcolor="black"></td>
+    <td bgcolor="black"></td>
+    <td bgcolor="black"></td>
+    <td bgcolor="black"></td>
+    <td bgcolor="black"></td>
+    <td bgcolor="black"></td>
+    <td bgcolor="black"></td>
+    <td bgcolor="black"></td>
+    <td bgcolor="black"></td>
+    <td bgcolor="black"></td>
+    <td bgcolor="black"></td>
+    <td bgcolor="black"></td>
+    <td bgcolor="black"></td>
+    <td bgcolor="black"></td>
+    <td bgcolor="black"></td>
+    <td bgcolor="black"></td>
+    <td bgcolor="black"></td>
+    <td bgcolor="black"></td>
+    <td bgcolor="black"></td>
+    <td bgcolor="black"></td>
+    <td>PlaySound(sound,volume),GetAudioClip(sound)</td>
+    <td bgcolor="black"></td>
+    <td bgcolor="black"></td>
+    <td bgcolor="black"></td>
+</tr>
+<tr>
+    <td colspan="2">ItemData</td>
+    <td bgcolor="gray"></td>
+    <td bgcolor="gray"></td>
+    <td bgcolor="gray"></td>
+    <td bgcolor="gray"></td>
+    <td bgcolor="gray"></td>
+    <td bgcolor="gray"></td>
+    <td bgcolor="gray"></td>
+    <td bgcolor="gray"></td>
+    <td bgcolor="gray"></td>
+    <td bgcolor="gray"></td>
+    <td bgcolor="gray"></td>
+    <td bgcolor="gray"></td>
+    <td bgcolor="gray"></td>
+    <td bgcolor="gray"></td>
+    <td bgcolor="gray"></td>
+    <td bgcolor="gray"></td>
+    <td bgcolor="gray"></td>
+    <td bgcolor="gray"></td>
+    <td bgcolor="gray"></td>
+    <td bgcolor="gray"></td>
+    <td bgcolor="gray"></td>
+    <td bgcolor="gray"></td>
+    <td bgcolor="gray"></td>
+    <td bgcolor="gray"></td>
+</tr>
+<tr>
+    <td colspan="2">Level</td>
+    <td bgcolor="gray"></td>
+    <td bgcolor="gray"></td>
+    <td bgcolor="gray"></td>
+    <td bgcolor="gray"></td>
+    <td bgcolor="gray"></td>
+    <td bgcolor="gray"></td>
+    <td bgcolor="gray"></td>
+    <td bgcolor="gray"></td>
+    <td bgcolor="gray"></td>
+    <td bgcolor="gray"></td>
+    <td bgcolor="gray"></td>
+    <td bgcolor="gray"></td>
+    <td bgcolor="gray"></td>
+    <td bgcolor="gray"></td>
+    <td bgcolor="gray"></td>
+    <td bgcolor="gray"></td>
+    <td bgcolor="gray"></td>
+    <td bgcolor="gray"></td>
+    <td bgcolor="gray"></td>
+    <td bgcolor="gray"></td>
+    <td bgcolor="gray"></td>
+    <td bgcolor="gray"></td>
+    <td bgcolor="gray"></td>
+    <td bgcolor="gray"></td>
+</tr>
+<tr>
+    <td colspan="2">MiniGame</td>
+    <td bgcolor="gray"></td>
+    <td bgcolor="gray"></td>
+    <td bgcolor="gray"></td>
+    <td bgcolor="gray"></td>
+    <td bgcolor="gray"></td>
+    <td bgcolor="gray"></td>
+    <td bgcolor="gray"></td>
+    <td bgcolor="gray"></td>
+    <td bgcolor="gray"></td>
+    <td bgcolor="gray"></td>
+    <td bgcolor="gray"></td>
+    <td bgcolor="gray"></td>
+    <td bgcolor="gray"></td>
+    <td bgcolor="gray"></td>
+    <td bgcolor="gray"></td>
+    <td bgcolor="gray"></td>
+    <td bgcolor="gray"></td>
+    <td bgcolor="gray"></td>
+    <td bgcolor="gray"></td>
+    <td bgcolor="gray"></td>
+    <td bgcolor="gray"></td>
+    <td bgcolor="gray"></td>
+    <td bgcolor="gray"></td>
+    <td bgcolor="gray"></td>
+</tr>
+<tr>
+    <td colspan="2">GameOver</td>
+    <td bgcolor="gray"></td>
+    <td bgcolor="gray"></td>
+    <td bgcolor="gray"></td>
+    <td bgcolor="gray"></td>
+    <td bgcolor="gray"></td>
+    <td bgcolor="gray"></td>
+    <td bgcolor="gray"></td>
+    <td bgcolor="gray"></td>
+    <td bgcolor="gray"></td>
+    <td bgcolor="gray"></td>
+    <td bgcolor="gray"></td>
+    <td bgcolor="gray"></td>
+    <td bgcolor="gray"></td>
+    <td bgcolor="gray"></td>
+    <td bgcolor="gray"></td>
+    <td bgcolor="gray"></td>
+    <td bgcolor="gray"></td>
+    <td bgcolor="gray"></td>
+    <td bgcolor="gray"></td>
+    <td bgcolor="gray"></td>
+    <td bgcolor="gray"></td>
+    <td bgcolor="gray"></td>
+    <td bgcolor="gray"></td>
+    <td bgcolor="gray"></td>
+</tr>
+</table>

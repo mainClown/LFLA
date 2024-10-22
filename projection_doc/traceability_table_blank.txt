@@ -1,0 +1,115 @@
+==Трассируемость функциональных требований==
+
+<table class="wikitable" border="2">
+<tr>
+    <th rowspan="2" colspan="2">Подсистемы и решения</th>
+    <th colspan="19">Функциональные требования</th>
+    <th colspan="30">Ограничения</th>
+</tr>
+<tr>
+    <th>Ф.Т. 1.1.1</th>
+    <th>Ф.Т. 1.1.2</th>
+    <th>Ф.Т. 1.1.3</th>
+    <th>Ф.Т. 1.2.1</th>
+    <th>Ф.Т. 1.2.2</th>
+    <th>Ф.Т. 1.3.1</th>
+    <th>Ф.Т. 1.4.1</th>
+    <th>Ф.Т. 1.5.1</th>
+    <th>Ф.Т. 1.5.2</th>
+    <th>Ф.Т. 1.5.3</th>
+    <th>Ф.Т. 1.6.1</th>
+    <th>Ф.Т. 2.1</th>
+    <th>Ф.Т. 2.2</th>
+    <th>Ф.Т. 2.3</th>
+    <th>Ф.Т. 2.4</th>
+    <th>Ф.Т. 3.1</th>
+    <th>Ф.Т. 3.2</th>
+    <th>Ф.Т. 3.3</th>
+    <th>Ф.Т. 3.4</th>
+
+    <th>О. 1.1</th>
+    <th>О. 1.2</th>
+    <th>О. 1.3</th>
+    <th>О. 1.4</th>
+    <th>О. 1.5</th>
+    <th>О. 1.6</th>
+    <th>О. 1.7</th>
+    <th>О. 1.8</th>
+    <th>О. 1.9</th>
+    <th>О. 1.10</th>
+    <th>О. 1.11</th>
+    <th>О. 1.12</th>
+    <th>О. 2.1</th>
+    <th>О. 3.1</th>
+    <th>О. 3.2</th>
+    <th>О. 3.3</th>
+    <th>О. 3.4</th>
+    <th>О. 4.1</th>
+    <th>О. 4.2</th>
+    <th>О. 4.3</th>
+    <th>О. 5.1</th>
+    <th>О. 5.2</th>
+    <th>О. 5.3</th>
+    <th>О. 6.1</th>
+    <th>О. 6.2</th>
+    <th>О. 6.3</th>
+    <th>О. 6.4</th>
+    <th>О. 6.5</th>
+    <th>О. 7.1</th>
+    <th>О. 7.2</th>
+</tr>
+
+<tr>
+    <td colspan="2"></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+</tr>
+
+</table>
