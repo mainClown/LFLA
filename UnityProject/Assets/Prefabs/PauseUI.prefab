@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5779362265294799837}
   - component: {fileID: 7369737110858508650}
   - component: {fileID: 7431447541140526712}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: RestartBtn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -132,7 +132,7 @@ GameObject:
   - component: {fileID: 5706412507378409939}
   - component: {fileID: 1808658926624391498}
   - component: {fileID: 5746937432003470711}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: ContinueBtn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -252,7 +252,7 @@ GameObject:
   - component: {fileID: 4670345292927160374}
   - component: {fileID: 7481616070798775781}
   - component: {fileID: 1617209071591378701}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: SettingsBtn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -371,7 +371,7 @@ GameObject:
   - component: {fileID: 9133922639352201168}
   - component: {fileID: 5431597907962259403}
   - component: {fileID: 1532566796871252710}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -444,7 +444,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8258344678245211908}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: PauseUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -488,7 +488,7 @@ GameObject:
   - component: {fileID: 6071350545552930879}
   - component: {fileID: 7639290290890217801}
   - component: {fileID: 2785620405749696618}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: ToMenuBtn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -607,7 +607,7 @@ GameObject:
   - component: {fileID: 2006033232387019737}
   - component: {fileID: 47435437868808864}
   - component: {fileID: 3058019849778530837}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: PauseBG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -628,10 +628,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 8258344678245211908}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 1280, y: 720}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &47435437868808864
 CanvasRenderer:
