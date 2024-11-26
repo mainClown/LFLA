@@ -1,18 +1,15 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ItemObject : MonoBehaviour
+public class Item : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public int ItemID;
+    public GameObject ItemObject;
+    public void HideItem()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        Inventory.Instance.AddItem(this);
+        ItemObject.SetActive(false);
     }
 }

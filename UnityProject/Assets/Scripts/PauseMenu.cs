@@ -1,18 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.SearchService;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class NewBehaviourScript : MonoBehaviour
+public class PauseMenu : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public void OpenMainMenu() 
     {
-        
+        SceneManager.LoadScene("MainMenuScene");
     }
-
-    // Update is called once per frame
-    void Update()
+    public void Restart() 
     {
-        
+        Inventory.Instance.StartNewInventory();
+        SceneManager.LoadScene("BedroomScene");
     }
 }
