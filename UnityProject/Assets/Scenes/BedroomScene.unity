@@ -1146,8 +1146,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b5ad6444da58b24f8a19b7b6318dccc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NecessaryItems: []
-  UnnecessaryItems: []
   ItemsContainerObject: {fileID: 578153402}
 --- !u!1 &706990356
 GameObject:
@@ -1410,50 +1408,6 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
---- !u!1 &1413712023
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1413712024}
-  - component: {fileID: 1413712025}
-  m_Layer: 0
-  m_Name: Inventory
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1413712024
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1413712023}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 14.911274, y: 0.8471664, z: 90.28349}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1413712025
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1413712023}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0fd2a1b0d6a6b91468e93e4d9ccae783, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!82 &1484037348 stripped
 AudioSource:
   m_CorrespondingSourceObject: {fileID: 4388314827596608617, guid: 357a8a33577bbd7459b86560228ad707, type: 3}
@@ -1732,6 +1686,7 @@ GameObject:
   - component: {fileID: 1873413170}
   - component: {fileID: 1873413169}
   - component: {fileID: 1873413168}
+  - component: {fileID: 1873413171}
   m_Layer: 0
   m_Name: bedroom_exit_door
   m_TagString: Untagged
@@ -1814,8 +1769,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 578153405}
-        m_TargetAssemblyTypeName: NewDoor, Assembly-CSharp
+      - m_Target: {fileID: 1873413171}
+        m_TargetAssemblyTypeName: Door, Assembly-CSharp
         m_MethodName: OpenLocation
         m_Mode: 5
         m_Arguments:
@@ -1864,6 +1819,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1873413166}
   m_CullTransparentMesh: 1
+--- !u!114 &1873413171
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1873413166}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb26fb85c8d477f4ab239b9ee8362eb6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  NecessaryItems: 0100000002000000
 --- !u!1 &1912228687
 GameObject:
   m_ObjectHideFlags: 0
@@ -2242,4 +2210,3 @@ SceneRoots:
   - {fileID: 1738735235}
   - {fileID: 959063386}
   - {fileID: 2924143437311501567}
-  - {fileID: 1413712024}

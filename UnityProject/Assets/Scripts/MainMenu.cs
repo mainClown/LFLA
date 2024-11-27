@@ -8,7 +8,8 @@ public class MainMenu : MonoBehaviour
 {
     public void StartNewGame()
     {
-        Inventory.Instance.StartNewInventory();
+        Inventory.Instance.NewInventory();
+        TextBubble.Instance.NewItemsToShow();
         SceneManager.LoadScene("BedroomScene");    
     }
     public void Exit() 

@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Timer : MonoBehaviour
 {
+    // Это я баловался
+    // Потом доделаю
     public float MaxTimer = 60f;
     public float CurrentTimer;
 
@@ -19,6 +21,6 @@ public class Timer : MonoBehaviour
     }
     public void DoTimer() 
     {
-        CurrentTimer -= Time.deltaTime;
+        CurrentTimer -= Time.deltaTime; // Time.deltaTime - время между сменой кадров в секундах
     }
 }

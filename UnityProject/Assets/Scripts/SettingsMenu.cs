@@ -18,25 +18,7 @@ public class SettingsMenu : MonoBehaviour
     private float SoundVolume = 1f;
     private float MusicVolume = 1f;
     private bool EasyMode = true;
-    //
-    public void SaveSoundVolume()
-    {
-        SoundVolume = SoundSlider.GetComponent<Slider>().value;
-        PlayerPrefs.SetFloat("SoundVolume", SoundVolume);
-        PlayerPrefs.Save();
-    }
-    public void SaveMusicVolume() 
-    {
-        MusicVolume = MusicSlider.GetComponent<Slider>().value;
-        PlayerPrefs.SetFloat("MusicVolume", MusicVolume);
-        PlayerPrefs.Save();
-    }
-    public void SaveDifficulty() 
-    {
-        EasyMode = EasySwitch.isOn;
-        PlayerPrefs.SetInt("EasyMode", Convert.ToInt32(EasyMode));
-        PlayerPrefs.Save();
-    }
+
     public void SaveSettings()
     {
         SoundVolume = SoundSlider.GetComponent<Slider>().value;

@@ -1,50 +1,41 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class NewDoor : MonoBehaviour
 {
-    public List<Item> NecessaryItems;
-    public List<Item> UnnecessaryItems;
+    public GameObject ItemsContainerObject; // Объект содержимого всех предметов локации, включая двери.
+    private static List<int> InventoryItems;
 
-    public GameObject ItemsContainerObject;
-    private static List<int> LocationItems;
-
-    private Transform[] ItemsList;
-    //По переходу в локацию, скрывает все собранные игроком предметы
+    private Transform[] ItemsList; // Список всех предметов в ItemsContainerObject
+    //По переходу в локацию, скрывает все собранные игроком предметы и оставшиеся добавляет в ItemsToShow
     private void Awake()
     {
         if (ItemsContainerObject != null)
         {
-            LocationItems = Inventory.Instance.GetItems();
+            InventoryItems = Inventory.Instance.GetItems(); // Получаем ID предметов из инвентаря
             ItemsList = ItemsContainerObject.GetComponentsInChildren<Transform>();
             foreach (Transform childObject in ItemsList)
             {
                 Item item = childObject.GetComponent<Item>();
                 if (item != null)
                 {
-                    foreach (int itemID in LocationItems)
+                    foreach (int itemID in InventoryItems)
                     {
-                        if (item.ItemID == itemID)
+                        if (item.ItemID == itemID) //Если предмет в локации есть в инвентаре, он скрывается
                         {
                             item.gameObject.SetActive(false);
+                        }
+                        else // иначе добавляется в ItemsToShow 
+                        {
+                            TextBubble.Instance.AddItemsToShow(item.ItemID);
                         }
                     }
                 }
             }
         }
-        //TextBubble.Instance.AddItemsToShow(NecessaryItems);
-        //TextBubble.Instance.AddItemsToShow(UnnecessaryItems);
     }
-
-    public void CheckTransition() 
-    {
-        //Пока не чекает ничего
-    }
-    //Перенёс функцию из Door.cs
-    public void OpenLocation(string LocationName)
-    {
-        SceneManager.LoadScene(LocationName);
-    }
+    //А больше нет ничего, всё в Door.cs
 }

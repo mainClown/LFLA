@@ -1,0 +1,27 @@
+ID предметов
+
+1 - phone
+2 - clothes
+3 - conspect
+4 - report
+5 - usb
+6 - powerbank
+7 - pensilcase
+8 - jacket
+9 - uniKey
+10 - ticket
+11 - calculator
+12 - keys
+13 - umbrella
+14 - boots
+15 - toothbrush
+16 - sink
+17 - dryShampoo
+18 - medicine
+19 - deodorant
+20 - brush
+21 - chocolate
+22 - coffee
+23 - fridge
+24 - lunchbox
+25 - headphones

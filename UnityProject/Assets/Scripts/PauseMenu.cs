@@ -12,7 +12,8 @@ public class PauseMenu : MonoBehaviour
     }
     public void Restart() 
     {
-        Inventory.Instance.StartNewInventory();
+        Inventory.Instance.NewInventory();
+        TextBubble.Instance.NewItemsToShow();
         SceneManager.LoadScene("BedroomScene");
     }
 }
