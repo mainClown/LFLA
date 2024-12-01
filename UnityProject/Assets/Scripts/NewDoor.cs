@@ -3,19 +3,22 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class NewDoor : MonoBehaviour
 {
     public GameObject ItemsContainerObject; // Объект содержимого всех предметов локации, включая двери.
     private static List<int> InventoryItems;
-
     private Transform[] ItemsList; // Список всех предметов в ItemsContainerObject
-    //По переходу в локацию, скрывает все собранные игроком предметы и оставшиеся добавляет в ItemsToShow
-    private void Awake()
+
+    //По переходу в локацию, вешает на UI камеру, скрывает все собранные игроком предметы и оставшиеся добавляет в ItemsToShow
+    private void Start()
     {
+        Camera mainCamera = Camera.main;
+        Inventory.Instance.GetComponent<Canvas>().worldCamera = mainCamera;
         if (ItemsContainerObject != null)
         {
-            InventoryItems = Inventory.Instance.GetItems(); // Получаем ID предметов из инвентаря
+            InventoryItems = Inventory.Instance.GetItemsID(); // Получаем ID предметов из инвентаря
             ItemsList = ItemsContainerObject.GetComponentsInChildren<Transform>();
             foreach (Transform childObject in ItemsList)
             {
@@ -37,5 +40,6 @@ public class NewDoor : MonoBehaviour
             }
         }
     }
+
     //А больше нет ничего, всё в Door.cs
 }
