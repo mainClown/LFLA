@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ItemObject : MonoBehaviour
+public class Item : MonoBehaviour
 {
     /* (Вроде бы)
      * Для работы скрипта на сцене нужно разместить объект EventSystem(находится во вкладке UI)
