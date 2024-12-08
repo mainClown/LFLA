@@ -8,8 +8,8 @@ using System.Linq;
 public class Ending : MonoBehaviour
 {
     public string EndingText;
-    private string MainTextFile = "EndingTexts.csv";
-    private string ItemsTextFile = "EndingTextsForItems.csv";
+    public string MainTextFile = "EndingTexts.csv";
+    public string ItemsTextFile = "EndingTextsForItems.csv";
 
     private Dictionary<string, string> mainTextDictionary = new Dictionary<string, string>();
     private Dictionary<string, ItemText> itemsDictionary = new Dictionary<string, ItemText>();
@@ -36,11 +36,12 @@ public class Ending : MonoBehaviour
 
     private void LoadMainTextFile()
     {
-        string[] lines = File.ReadAllLines(MainTextFilePath);
+        string filePath = Path.Combine(Application.dataPath, "_Assets", MainTextFile);
+        string[] lines = File.ReadAllLines(filePath);
 
         foreach (string line in lines)
         {
-            string[] columns = line.Split(',');
+            string[] columns = line.Split(';');
 
             if (columns.Length >= 2)
             {
@@ -51,11 +52,12 @@ public class Ending : MonoBehaviour
 
     private void LoadItemsTextFile()
     {
-        string[] lines = File.ReadAllLines(ItemsTextFilePath);
+        string filePath = Path.Combine(Application.dataPath, "_Assets", ItemsTextFile);
+        string[] lines = File.ReadAllLines(filePath);
 
         for (int i = 1; i < lines.Length; i++)
         {
-            string[] columns = lines[i].Split(',');
+            string[] columns = lines[i].Split(';');
 
             if (columns.Length >= 3)
             {
@@ -63,7 +65,7 @@ public class Ending : MonoBehaviour
                 string taken = columns[1];
                 string notTaken = columns[2];
 
-                itemsDictionary[item] = new ItemData(taken, notTaken);
+                itemsDictionary[item] = new ItemText(taken, notTaken);
             }
         }
     }
@@ -86,7 +88,7 @@ public class Ending : MonoBehaviour
 
     public void ShowEnding(bool inTime, string EndingText)
     {
-        string endingText = GenerateEndingText(bool inTime, List < Item > collectedItems);
+        EndingText = GenerateEndingText(inTime, collectedItems);
     }
 
     public string GenerateEndingText(bool inTime, List<Item> collectedItems)
@@ -116,9 +118,9 @@ public class Ending : MonoBehaviour
             foreach (var row in itemsDictionary)
             {
                 string key = row.Key;
-                ItemData itemData = row.Value;
+                ItemText itemData = row.Value;
 
-                if (collectedItems.Any(item => item.itemName == key))
+                if (collectedItems.Any(item => item.Name == key))
                 {
                     endingTextBuilder.Append(itemData.Taken);
                 }
