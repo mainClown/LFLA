@@ -235,7 +235,6 @@ GameObject:
   - component: {fileID: 204262654}
   - component: {fileID: 204262657}
   - component: {fileID: 204262656}
-  - component: {fileID: 204262655}
   - component: {fileID: 204262658}
   m_Layer: 0
   m_Name: sink
@@ -263,74 +262,6 @@ RectTransform:
   m_AnchoredPosition: {x: -283.77023, y: -50.873}
   m_SizeDelta: {x: 215.667, y: 380.813}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &204262655
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 204262652}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Navigation:
-    m_Mode: 3
-    m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
-  m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.7058824, g: 0.7058824, b: 0.7058824, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
-    m_ColorMultiplier: 1
-    m_FadeDuration: 0.1
-  m_SpriteState:
-    m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 0}
-    m_SelectedSprite: {fileID: 0}
-    m_DisabledSprite: {fileID: 0}
-  m_AnimationTriggers:
-    m_NormalTrigger: Normal
-    m_HighlightedTrigger: Highlighted
-    m_PressedTrigger: Pressed
-    m_SelectedTrigger: Selected
-    m_DisabledTrigger: Disabled
-  m_Interactable: 1
-  m_TargetGraphic: {fileID: 204262656}
-  m_OnClick:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1487386410}
-        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
-        m_MethodName: PlayOneShot
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 8300000, guid: 3537f53e4178ec24eb522bc07fa78e99, type: 3}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 204262658}
-        m_TargetAssemblyTypeName: Item, Assembly-CSharp
-        m_MethodName: HideItem
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &204262656
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -381,8 +312,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5b11fd55b204364a898400bad40583e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ItemID: 16
-  ItemObject: {fileID: 204262652}
+  Name: "\u0423\u043C\u044B\u0442\u044C\u0441\u044F (\u0445\u0437 \u043F\u0435\u0440\u0435\u0438\u043C\u0435\u043D\u0443\u0439\u0442\u0435
+    \u0441\u0430\u043C\u0438 \u0432\u0441\u0435 \u043F\u043E\u0434\u043F\u0438\u0441\u0438)"
+  ItemId: 16
+  InventorySprite: {fileID: 0}
+  HighlightSprite: {fileID: 21300000, guid: 876a32bd96c1413429e232af415b2167, type: 3}
+  NoHighlightSprite: {fileID: 21300000, guid: 876a32bd96c1413429e232af415b2167, type: 3}
 --- !u!1 &409842054
 GameObject:
   m_ObjectHideFlags: 0
@@ -394,7 +329,6 @@ GameObject:
   - component: {fileID: 409842056}
   - component: {fileID: 409842059}
   - component: {fileID: 409842058}
-  - component: {fileID: 409842057}
   - component: {fileID: 409842060}
   m_Layer: 0
   m_Name: toothbrush
@@ -422,74 +356,6 @@ RectTransform:
   m_AnchoredPosition: {x: -408.3, y: 55.9}
   m_SizeDelta: {x: 38.313, y: 35.892}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &409842057
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 409842054}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Navigation:
-    m_Mode: 3
-    m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
-  m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.7058824, g: 0.7058824, b: 0.7058824, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
-    m_ColorMultiplier: 1
-    m_FadeDuration: 0.1
-  m_SpriteState:
-    m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 0}
-    m_SelectedSprite: {fileID: 0}
-    m_DisabledSprite: {fileID: 0}
-  m_AnimationTriggers:
-    m_NormalTrigger: Normal
-    m_HighlightedTrigger: Highlighted
-    m_PressedTrigger: Pressed
-    m_SelectedTrigger: Selected
-    m_DisabledTrigger: Disabled
-  m_Interactable: 1
-  m_TargetGraphic: {fileID: 409842058}
-  m_OnClick:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1487386410}
-        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
-        m_MethodName: PlayOneShot
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 8300000, guid: 3537f53e4178ec24eb522bc07fa78e99, type: 3}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 409842060}
-        m_TargetAssemblyTypeName: Item, Assembly-CSharp
-        m_MethodName: HideItem
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &409842058
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -540,8 +406,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5b11fd55b204364a898400bad40583e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ItemID: 15
-  ItemObject: {fileID: 409842054}
+  Name: "\u0417\u0443\u0431\u043D\u0430\u044F \u0449\u0451\u0442\u043A\u0430"
+  ItemId: 15
+  InventorySprite: {fileID: 21300000, guid: 88c1e6456acaf064494a88d41bc9ac51, type: 3}
+  HighlightSprite: {fileID: 21300000, guid: dcf64ebbecd0f5b4ea20f69c61999bcf, type: 3}
+  NoHighlightSprite: {fileID: 21300000, guid: dcf64ebbecd0f5b4ea20f69c61999bcf, type: 3}
 --- !u!1 &475407774
 GameObject:
   m_ObjectHideFlags: 0
@@ -941,7 +810,6 @@ GameObject:
   - component: {fileID: 1705314681}
   - component: {fileID: 1705314684}
   - component: {fileID: 1705314683}
-  - component: {fileID: 1705314682}
   - component: {fileID: 1705314685}
   m_Layer: 0
   m_Name: bathroom_exit_dr
@@ -969,74 +837,6 @@ RectTransform:
   m_AnchoredPosition: {x: -577.08, y: -33.906}
   m_SizeDelta: {x: 124.7, y: 565.705}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1705314682
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1705314680}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Navigation:
-    m_Mode: 3
-    m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
-  m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.7075472, g: 0.7075472, b: 0.7075472, a: 1}
-    m_PressedColor: {r: 0.6509434, g: 0.6509434, b: 0.6509434, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
-    m_ColorMultiplier: 1
-    m_FadeDuration: 0.1
-  m_SpriteState:
-    m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 0}
-    m_SelectedSprite: {fileID: 0}
-    m_DisabledSprite: {fileID: 0}
-  m_AnimationTriggers:
-    m_NormalTrigger: Normal
-    m_HighlightedTrigger: Highlighted
-    m_PressedTrigger: Pressed
-    m_SelectedTrigger: Selected
-    m_DisabledTrigger: Disabled
-  m_Interactable: 1
-  m_TargetGraphic: {fileID: 1705314683}
-  m_OnClick:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1487386410}
-        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
-        m_MethodName: PlayOneShot
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 8300000, guid: 9b69519d340359c43a77f6534cc945eb, type: 3}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1705314685}
-        m_TargetAssemblyTypeName: Door, Assembly-CSharp
-        m_MethodName: OpenLocation
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: HallScene
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &1705314683
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1088,6 +888,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   NecessaryItems: 140000000f000000
+  LocationSceneName: HallScene
+  LocationDisplay: "\u0412 \u043A\u043E\u0440\u0438\u0434\u043E\u0440"
+  HighlightSprite: {fileID: 21300000, guid: 399e5a2d8a50fc7449cebd63adb786d5, type: 3}
+  NoHighlightSprite: {fileID: 21300000, guid: 399e5a2d8a50fc7449cebd63adb786d5, type: 3}
 --- !u!1 &1727345009
 GameObject:
   m_ObjectHideFlags: 0
@@ -1099,7 +903,6 @@ GameObject:
   - component: {fileID: 1727345011}
   - component: {fileID: 1727345014}
   - component: {fileID: 1727345013}
-  - component: {fileID: 1727345012}
   - component: {fileID: 1727345015}
   m_Layer: 0
   m_Name: dryShampoo
@@ -1127,74 +930,6 @@ RectTransform:
   m_AnchoredPosition: {x: 526, y: -3}
   m_SizeDelta: {x: 20, y: 90}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1727345012
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1727345009}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Navigation:
-    m_Mode: 3
-    m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
-  m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.7058824, g: 0.7058824, b: 0.7058824, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
-    m_ColorMultiplier: 1
-    m_FadeDuration: 0.1
-  m_SpriteState:
-    m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 0}
-    m_SelectedSprite: {fileID: 0}
-    m_DisabledSprite: {fileID: 0}
-  m_AnimationTriggers:
-    m_NormalTrigger: Normal
-    m_HighlightedTrigger: Highlighted
-    m_PressedTrigger: Pressed
-    m_SelectedTrigger: Selected
-    m_DisabledTrigger: Disabled
-  m_Interactable: 1
-  m_TargetGraphic: {fileID: 1727345013}
-  m_OnClick:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1487386410}
-        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
-        m_MethodName: PlayOneShot
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 8300000, guid: 3537f53e4178ec24eb522bc07fa78e99, type: 3}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1727345015}
-        m_TargetAssemblyTypeName: Item, Assembly-CSharp
-        m_MethodName: HideItem
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &1727345013
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1245,8 +980,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5b11fd55b204364a898400bad40583e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ItemID: 17
-  ItemObject: {fileID: 1727345009}
+  Name: "\u0441\u0443\u0445\u043E\u0439\u044A \u0448\u0430\u043C\u043F\u0443\u0443"
+  ItemId: 17
+  InventorySprite: {fileID: 21300000, guid: 5229dd1ccb2df664fa00a44ebc01d077, type: 3}
+  HighlightSprite: {fileID: 21300000, guid: f971483d3267a9741b55dd07b0cdd7b2, type: 3}
+  NoHighlightSprite: {fileID: 21300000, guid: f971483d3267a9741b55dd07b0cdd7b2, type: 3}
 --- !u!1 &1755285830
 GameObject:
   m_ObjectHideFlags: 0
@@ -1258,7 +996,6 @@ GameObject:
   - component: {fileID: 1755285832}
   - component: {fileID: 1755285835}
   - component: {fileID: 1755285834}
-  - component: {fileID: 1755285833}
   - component: {fileID: 1755285836}
   m_Layer: 0
   m_Name: deodorant
@@ -1286,74 +1023,6 @@ RectTransform:
   m_AnchoredPosition: {x: 491, y: -25}
   m_SizeDelta: {x: 21, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1755285833
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1755285830}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Navigation:
-    m_Mode: 3
-    m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
-  m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.7058824, g: 0.7058824, b: 0.7058824, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
-    m_ColorMultiplier: 1
-    m_FadeDuration: 0.1
-  m_SpriteState:
-    m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 0}
-    m_SelectedSprite: {fileID: 0}
-    m_DisabledSprite: {fileID: 0}
-  m_AnimationTriggers:
-    m_NormalTrigger: Normal
-    m_HighlightedTrigger: Highlighted
-    m_PressedTrigger: Pressed
-    m_SelectedTrigger: Selected
-    m_DisabledTrigger: Disabled
-  m_Interactable: 1
-  m_TargetGraphic: {fileID: 1755285834}
-  m_OnClick:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1487386410}
-        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
-        m_MethodName: PlayOneShot
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 8300000, guid: 3537f53e4178ec24eb522bc07fa78e99, type: 3}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1755285836}
-        m_TargetAssemblyTypeName: Item, Assembly-CSharp
-        m_MethodName: HideItem
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &1755285834
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1404,8 +1073,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5b11fd55b204364a898400bad40583e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ItemID: 19
-  ItemObject: {fileID: 1755285830}
+  Name: "*\u0443\u043D\u0438\u0447\u0442\u043E\u0436\u0430\u044E\u0449\u0438\u0439_\u0437\u0430\u043F\u0430\u0445_10K*"
+  ItemId: 19
+  InventorySprite: {fileID: 21300000, guid: 39fc4a466af609b4c97d1a80387badfb, type: 3}
+  HighlightSprite: {fileID: 21300000, guid: eb91e209153a9ba4ca760d75f46d5c2e, type: 3}
+  NoHighlightSprite: {fileID: 21300000, guid: eb91e209153a9ba4ca760d75f46d5c2e, type: 3}
 --- !u!1 &1865070919
 GameObject:
   m_ObjectHideFlags: 0
@@ -1519,7 +1191,6 @@ GameObject:
   - component: {fileID: 1885559299}
   - component: {fileID: 1885559302}
   - component: {fileID: 1885559301}
-  - component: {fileID: 1885559300}
   - component: {fileID: 1885559303}
   m_Layer: 0
   m_Name: brush
@@ -1547,74 +1218,6 @@ RectTransform:
   m_AnchoredPosition: {x: -39, y: 11}
   m_SizeDelta: {x: 48, y: 36}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1885559300
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1885559297}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Navigation:
-    m_Mode: 3
-    m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
-  m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.7058824, g: 0.7058824, b: 0.7058824, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
-    m_ColorMultiplier: 1
-    m_FadeDuration: 0.1
-  m_SpriteState:
-    m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 0}
-    m_SelectedSprite: {fileID: 0}
-    m_DisabledSprite: {fileID: 0}
-  m_AnimationTriggers:
-    m_NormalTrigger: Normal
-    m_HighlightedTrigger: Highlighted
-    m_PressedTrigger: Pressed
-    m_SelectedTrigger: Selected
-    m_DisabledTrigger: Disabled
-  m_Interactable: 1
-  m_TargetGraphic: {fileID: 1885559301}
-  m_OnClick:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1487386410}
-        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
-        m_MethodName: PlayOneShot
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 8300000, guid: 3537f53e4178ec24eb522bc07fa78e99, type: 3}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1885559303}
-        m_TargetAssemblyTypeName: Item, Assembly-CSharp
-        m_MethodName: HideItem
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &1885559301
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1665,8 +1268,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5b11fd55b204364a898400bad40583e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ItemID: 20
-  ItemObject: {fileID: 1885559297}
+  Name: Bruh..
+  ItemId: 20
+  InventorySprite: {fileID: 21300000, guid: ee1ee3b248cd1184bae2933c85bb8061, type: 3}
+  HighlightSprite: {fileID: 21300000, guid: 558d0c6e7cc3c164babc0d2194a9b733, type: 3}
+  NoHighlightSprite: {fileID: 21300000, guid: 558d0c6e7cc3c164babc0d2194a9b733, type: 3}
 --- !u!1 &2085437869
 GameObject:
   m_ObjectHideFlags: 0
@@ -1678,7 +1284,6 @@ GameObject:
   - component: {fileID: 2085437871}
   - component: {fileID: 2085437874}
   - component: {fileID: 2085437873}
-  - component: {fileID: 2085437872}
   - component: {fileID: 2085437875}
   m_Layer: 0
   m_Name: medicine
@@ -1706,74 +1311,6 @@ RectTransform:
   m_AnchoredPosition: {x: -129, y: -58}
   m_SizeDelta: {x: 42, y: 34}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &2085437872
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2085437869}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Navigation:
-    m_Mode: 3
-    m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
-  m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.7058824, g: 0.7058824, b: 0.7058824, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
-    m_ColorMultiplier: 1
-    m_FadeDuration: 0.1
-  m_SpriteState:
-    m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 0}
-    m_SelectedSprite: {fileID: 0}
-    m_DisabledSprite: {fileID: 0}
-  m_AnimationTriggers:
-    m_NormalTrigger: Normal
-    m_HighlightedTrigger: Highlighted
-    m_PressedTrigger: Pressed
-    m_SelectedTrigger: Selected
-    m_DisabledTrigger: Disabled
-  m_Interactable: 1
-  m_TargetGraphic: {fileID: 2085437873}
-  m_OnClick:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1487386410}
-        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
-        m_MethodName: PlayOneShot
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 8300000, guid: 3537f53e4178ec24eb522bc07fa78e99, type: 3}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 2085437875}
-        m_TargetAssemblyTypeName: Item, Assembly-CSharp
-        m_MethodName: HideItem
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &2085437873
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1824,8 +1361,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5b11fd55b204364a898400bad40583e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ItemID: 18
-  ItemObject: {fileID: 2085437869}
+  Name: "\u043A\u043E\u043B\u0451\u0441\u0430"
+  ItemId: 18
+  InventorySprite: {fileID: 21300000, guid: 99720c9ff9abf4940beb311051b0c31d, type: 3}
+  HighlightSprite: {fileID: 21300000, guid: c6b19a312e4044843a4fc932880288f8, type: 3}
+  NoHighlightSprite: {fileID: 21300000, guid: c6b19a312e4044843a4fc932880288f8, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

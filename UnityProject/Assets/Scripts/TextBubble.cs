@@ -7,7 +7,6 @@ using TMPro;
 
 public class TextBubble : MonoBehaviour
 {
-    //Много всего надо сделать, лучше всего использовать Корутины, так как показ пузыря у нас периодический.
     public static List<int> ItemsToShow { get; private set; }
     public static TextBubble Instance { get; private set; }
     public float TimeMsgAppeared = 0.0f;
@@ -17,7 +16,7 @@ public class TextBubble : MonoBehaviour
     public TextAsset textBText;
     public string[] dataLines;
     bool IsActive = true;
-
+    //Сори, Даша, если что-то поломал
     #region Singleton паттерн
     private void Awake()
     {
@@ -28,20 +27,15 @@ public class TextBubble : MonoBehaviour
         else
         {
             Instance = this;
+            //Перенёс из MainMenu.cs
+            ItemsToShow = new List<int>();
+            AddItemsToShow(new List<int>(new int[] { 1, 2, 3, 4, 5, 6, 7 }));
             dataLines = textBText.text.Split('\n');
             InvokeRepeating("ShowTextBubble", 0, 5.0f);
             DontDestroyOnLoad(target: this);
         }
     }
     #endregion
-    public void ContinueGame()
-    {
-        //Не помню чё я тут хотел сделать
-    }
-    public void NewItemsToShow() // Обнуляем статические переменные
-    {
-        ItemsToShow = new List<int>();
-    }
     //Это всё можно было бы вызывать вне класса, например TextBubble.Instance.AddRange(ItemsToShow)
     // И по сути обойтись без функций, но у меня стоит private set в поле. А всё делать публичным... ну такое
     public void AddItemsToShow(List<int> itemsToShow)

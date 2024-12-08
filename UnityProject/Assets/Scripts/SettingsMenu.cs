@@ -30,6 +30,8 @@ public class SettingsMenu : MonoBehaviour
         EasyMode = EasySwitch.isOn;
         PlayerPrefs.SetInt("EasyMode", Convert.ToInt32(EasyMode));
         PlayerPrefs.Save();
+        SoundManager.Instance.UpdateVolume();
+        MusicManager.Instance.UpdateVolume();
     }
     public void OpenSettingsMenu() 
     {

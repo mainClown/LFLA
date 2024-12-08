@@ -2,6 +2,7 @@ using JetBrains.Annotations;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
@@ -15,6 +16,9 @@ public class Inventory : MonoBehaviour
     public GameObject InventoryUI;
     public GameObject CellContainerObject;
     public GameObject CanvasUI;
+    public GameObject ItemCounter;
+
+    private int ItemCount;
 
     #region Singleton паттерн
     private void Awake()
@@ -28,6 +32,7 @@ public class Inventory : MonoBehaviour
         {
             Instance = this;
             SelectedItems = new List<Item>();
+            ItemCount = 0;
             DontDestroyOnLoad(target: this);
         }
     }
@@ -35,6 +40,7 @@ public class Inventory : MonoBehaviour
     public void AddItem(Item ItemObject)
     {
         SelectedItems.Add(ItemObject);
+
         UpdateVisual(ItemObject);
         //TextBubble.Instance.DeleteItemToShow(ItemObject.ItemID);
     }
@@ -57,22 +63,23 @@ public class Inventory : MonoBehaviour
 
             if (icon.sprite == null)
             {
-                icon.GetComponent<Image>().color = new Color(1, 1, 1, 1);
-                icon.GetComponent<Image>().sprite = ItemObject.GetComponent<Image>().sprite;
+                if (ItemObject.InventorySprite != null)
+                {
+                    icon.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+                    icon.GetComponent<Image>().sprite = ItemObject.InventorySprite;
+                    ItemCount += 1;
+                }
+                ItemCounter.GetComponent<TextMeshProUGUI>().text = ItemCount.ToString()+"/51";
                 break;
             }
         }
-    }
-    public void NewInventory() // Обнуляем статическую переменную
-    {
-        SelectedItems = new List<Item>();
     }
     public List<int> GetItemsID() // Получаем ID предметов из инвентаря
     {
         List<int> ItemsID = new List<int>();
         foreach (var item in SelectedItems) 
         {
-            ItemsID.Add(item.ItemID);
+            ItemsID.Add(item.ItemId);
         }
         return ItemsID;
     }

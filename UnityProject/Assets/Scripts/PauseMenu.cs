@@ -7,6 +7,17 @@ using UnityEngine.SceneManagement;
 public class PauseMenu : MonoBehaviour
 {
     public GameObject CanvasUI;
+    public GameObject PauseUI;
+    public void PauseGame() 
+    {
+        PauseUI.SetActive(true);
+        Timer.Instance.TogglePause();
+    }
+    public void UnPauseGame() 
+    {
+        PauseUI.SetActive(false);
+        Timer.Instance.TogglePause();
+    }
     public void OpenMainMenu() 
     {
         Destroy(CanvasUI);
@@ -15,8 +26,6 @@ public class PauseMenu : MonoBehaviour
     public void Restart() 
     {
         Destroy(CanvasUI);
-        Inventory.Instance.NewInventory();
-        TextBubble.Instance.NewItemsToShow();
         SceneManager.LoadScene("BedroomScene");
     }
 }

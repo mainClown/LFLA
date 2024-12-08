@@ -1,62 +1,65 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class Item : MonoBehaviour
+public class Item : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
 {
     /* (Вроде бы)
      * Для работы скрипта на сцене нужно разместить объект EventSystem(находится во вкладке UI)
      * В камере разместить компонент Physics 2D Raycaster
      */
+
     public string Name;
     public int ItemId;
-    public bool Necessary;
-    public Sprite HighliteFileName; // Подсвеченная текстура
-    public Sprite NoHighliteFileName; // Обычная текстура
-    private SpriteRenderer spriteRenderer;
-    public Text nameDisplay; // Ссылка на UI текст для отображения имени
+    //public bool Necessary;
+    public Sprite InventorySprite;
+    public Sprite HighlightSprite; // Подсвеченная текстура
+    public Sprite NoHighlightSprite; // Обычная текстура
+    private Image ImageObject;
 
     // Start is called before the first frame update
     void Start()
     {
-        spriteRenderer = GetComponent<SpriteRenderer>();
-        // Устанавка исходной текстуры
-        if(spriteRenderer == null)
+        ImageObject = GetComponent<Image>();
+        // Установка исходной текстуры
+        if (ImageObject.sprite == null)
         {
-            spriteRenderer.sprite = NoHighlightSprite;
-        }   
+            ImageObject.sprite = NoHighlightSprite;
+        }
+
     }
 
-    private void OnMouseEnter()
+    public void OnPointerEnter(PointerEventData eventData)
     {
-        HighliteItem(ItemId);
-        nameDisplay.text = Name; // Установка текста
-        nameDisplay.gameObject.SetActive(true);
+        //HighlightItem();
+        ImageObject.sprite = HighlightSprite;
+        NewDoor.ShowDisplay(Name);
     }
 
-    private void OnMouseExit()
+    public void OnPointerExit(PointerEventData eventData)
     {
-        spriteRenderer.sprite = NoHighlightSprite;
-        nameDisplay.gameObject.SetActive(false); // Скрытие текста
+        //UnhighlightItem();
+        ImageObject.sprite = NoHighlightSprite;
+        NewDoor.HideDisplay();
     }
-
-    // Update is called once per frame
-    void Update()
+    public void OnPointerClick(PointerEventData eventData)
     {
-
+        //HideItem();
+        SoundManager.Instance.PlaySound(SoundManager.SoundClip.ItemPick);
+        gameObject.SetActive(false);
+        Inventory.Instance.AddItem(this);
+        NewDoor.HideDisplay();
     }
-
     // Скрывает предмет и вызывает AddItem(int ItemId) для добавления этого предмета в инвентарь.
-    void HideItem(int ItemId)
+    private void HideItem()
     {
-        GameObject.SetActive(false);
-        Inventory.AddItem(ItemId);
     }
 
     // Меняет текстуру предмета на подсвеченный вариант при наведении на него мышкой.
-    void HighliteItem(int ItemId)
+    private void HighlightItem()
     {
-        spriteRenderer.sprite = HighlightSprite;
     }
 }

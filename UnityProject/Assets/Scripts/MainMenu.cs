@@ -9,8 +9,7 @@ public class MainMenu : MonoBehaviour
 {
     public void StartNewGame() 
     {
-        TextBubble.Instance.NewItemsToShow();
-        TextBubble.Instance.AddItemsToShow(new List<int>(new int[] { 1, 2, 3, 4, 5, 6, 7 }));
+        //TextBubble методы перенёс в его Awake
         SceneManager.LoadScene("BedroomScene");
     }
 

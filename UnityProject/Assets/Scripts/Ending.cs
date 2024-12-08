@@ -11,14 +11,23 @@ public class Ending : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    //    public static Ending Instance { get; private set; }
+    //    #region Singleton паттерн
+    //    private void Awake()
+    //    {
+    //        if (Instance != null && Instance != this)
+    //        {
+    //            Destroy(this);
+    //        }
+    //        else
+    //        {
+    //            Instance = this;
+    //            DontDestroyOnLoad(target: this);
+    //        }
+    //    }
+    //    #endregion
 
     public void ShowEnding(bool inTime, string EndingText)
     {
@@ -27,6 +36,7 @@ public class Ending : MonoBehaviour
 
     public string GenerateEndingText(bool inTime, string MainTextFile, string ItemsTextFile, List<Item> collectedItems)
     {
-
+        return null;
     }
+
 }

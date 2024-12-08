@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class MinigameItem : MonoBehaviour
+public class MiniGameItem : MonoBehaviour
 {
     public int Id;
     public string Name;
@@ -12,6 +12,6 @@ public class MinigameItem : MonoBehaviour
 
     public void HideItem(int Id)
     {
-        GameObject.SetActive(false);
+        gameObject.SetActive(false);
     }
 }
