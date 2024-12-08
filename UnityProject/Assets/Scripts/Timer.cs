@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Data.Common;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Timer : MonoBehaviour
 {
@@ -72,6 +73,11 @@ public class Timer : MonoBehaviour
             string formattedTime = string.Format("{0:D2}:{1:D2}", TimerType/60, TimerType%60);
             TimerText.GetComponent<TextMeshProUGUI>().text = formattedTime;
             TimerText.GetComponent<TextMeshProUGUI>().color = Color.white;
+        }
+        if (TimerType == 0)
+        {
+            Ending.Instance.ShowEnding(false);
+            SceneManager.LoadScene("EndingScene");
         }
     }
 }
