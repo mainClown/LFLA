@@ -399,6 +399,7 @@ MonoBehaviour:
   NecessaryItems: 080000000c0000000e0000000f0000001400000018000000
   LocationSceneName: EndingScene
   LocationDisplay: "\u041D\u0430 \u0432\u044B\u0445\u043E\u0434"
+  NextLocationItems: none
   HighlightSprite: {fileID: 21300000, guid: e44bb7e3ca227cb4ba8ef626270c0058, type: 3}
   NoHighlightSprite: {fileID: 21300000, guid: e44bb7e3ca227cb4ba8ef626270c0058, type: 3}
 --- !u!1 &276333125
@@ -492,6 +493,7 @@ MonoBehaviour:
   NecessaryItems: 
   LocationSceneName: BathroomScene
   LocationDisplay: "\u0412\u0430\u043D\u043D\u0430\u044F \u043A\u043E\u043C\u043D\u0430\u0442\u0430"
+  NextLocationItems: 15,16,17,18,19,20
   HighlightSprite: {fileID: 21300000, guid: 85f214b0ce13c7645bf5322da0f45ed1, type: 3}
   NoHighlightSprite: {fileID: 21300000, guid: 85f214b0ce13c7645bf5322da0f45ed1, type: 3}
 --- !u!1 &308667211
@@ -780,6 +782,7 @@ MonoBehaviour:
   NecessaryItems: 
   LocationSceneName: KitchenScene
   LocationDisplay: "\u041D\u0430 \u043A\u0443\u0445\u043D\u044E"
+  NextLocationItems: 21,22,23,24,25
   HighlightSprite: {fileID: 21300000, guid: da0283004977da545affaaca1058a2f0, type: 3}
   NoHighlightSprite: {fileID: 21300000, guid: da0283004977da545affaaca1058a2f0, type: 3}
 --- !u!1 &831292014
@@ -1360,6 +1363,7 @@ MonoBehaviour:
   LocationSceneName: BedroomScene
   LocationDisplay: "\u0412 \u0441\u043F\u0430\u043B\u044C\u043D\u044E (\u0443\u0440\u0430
     \u0441\u043F\u0430\u0442\u0435\u043D\u044C\u043A\u0430\u0442\u044C)"
+  NextLocationItems: none
   HighlightSprite: {fileID: 21300000, guid: cf7d4881552faa84581a00e05f3e50b6, type: 3}
   NoHighlightSprite: {fileID: 21300000, guid: cf7d4881552faa84581a00e05f3e50b6, type: 3}
 --- !u!1 &1291524769

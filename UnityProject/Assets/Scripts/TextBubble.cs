@@ -53,16 +53,20 @@ public class TextBubble : MonoBehaviour
 
     string GetInfo()
     {
-        if (CurrentMsgId >= dataLines.Length)
-            CurrentMsgId = 0;
-        var item = ItemsToShow[CurrentMsgId].ToString();
-        for (int i = 0; i < dataLines.Length; i++)
+        if (ItemsToShow.Count != 0)
         {
-            var data = dataLines[CurrentMsgId].Split(',');
-            if (data[0]== item)
+            var item = ItemsToShow[CurrentMsgId].ToString();
+            for (int i = 0; i < dataLines.Length; i++)
             {
-                return data[1];
+                var number = dataLines[i].Split(",")[0];
+                var found = dataLines[i].IndexOf(",");
+                var data = dataLines[i].Substring(found + 1);
+                if (number == item)
+                {
+                    return data;
+                }
             }
+            return null;
         }
         return null;
     }
@@ -71,12 +75,20 @@ public class TextBubble : MonoBehaviour
     {
         if (IsActive == false){
             CurrentMsgId = CurrentMsgId + 1;
+            if (CurrentMsgId >= ItemsToShow.Count)
+                CurrentMsgId = 0;
             var data = GetInfo();
-            Debug.Log(data);
-            messageText.SetText(data.ToString());
+            if (data != null)
+            {
+                messageText.SetText(data.ToString());
+            }
         }
         IsActive = !IsActive;
         textB.SetActive(IsActive);
+        if (ItemsToShow.Count == 0)
+        {
+            textB.SetActive(false);
+        }
     }
     void HideTextBubble()
     {

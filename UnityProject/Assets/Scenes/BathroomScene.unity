@@ -890,6 +890,7 @@ MonoBehaviour:
   NecessaryItems: 140000000f000000
   LocationSceneName: HallScene
   LocationDisplay: "\u0412 \u043A\u043E\u0440\u0438\u0434\u043E\u0440"
+  NextLocationItems: none
   HighlightSprite: {fileID: 21300000, guid: 399e5a2d8a50fc7449cebd63adb786d5, type: 3}
   NoHighlightSprite: {fileID: 21300000, guid: 399e5a2d8a50fc7449cebd63adb786d5, type: 3}
 --- !u!1 &1727345009

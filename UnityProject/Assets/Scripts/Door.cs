@@ -13,6 +13,7 @@ public class Door : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
     public List<int> NecessaryItems; // айдишники обязательных предметов для открытия этой двери
     public string LocationSceneName; //куда ведёт
     public string LocationDisplay; //что вывести на экран подсказки
+    public string NextLocationItems; //да тупо, но строка с айди предметов в сделующей локации для TextBubble
     public Sprite HighlightSprite;
     public Sprite NoHighlightSprite;
     private Image DoorImageObject;
@@ -53,6 +54,26 @@ public class Door : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
         if (CheckTransition())
         {
             SoundManager.Instance.PlaySound(SoundManager.SoundClip.DoorCreak);
+            if (this.NextLocationItems != "none")
+            {
+                var NoLocationItemsInMesgs = true;
+                List<int> LstItems = this.NextLocationItems.Split(",").Select(int.Parse).ToList();
+                if (TextBubble.ItemsToShow.Count > 0)
+                {
+                    var lst = TextBubble.ItemsToShow;
+                    for (int i = 0; i < LstItems.Count; i++)
+                    {
+                        for (int j = 0; j < lst.Count; j++)
+                        {
+                            if (LstItems[i] == lst[j])
+                               NoLocationItemsInMesgs = false;
+                        }
+                    }
+                }
+                if (NoLocationItemsInMesgs)
+                    TextBubble.Instance.AddItemsToShow(LstItems);
+            }
+            Debug.Log(TextBubble.ItemsToShow.Count);
             SceneManager.LoadScene(LocationSceneName);
         }
         else 

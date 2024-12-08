@@ -51,6 +51,7 @@ public class Item : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
         SoundManager.Instance.PlaySound(SoundManager.SoundClip.ItemPick);
         gameObject.SetActive(false);
         Inventory.Instance.AddItem(this);
+        TextBubble.Instance.DeleteItemToShow(this.ItemId);
         NewDoor.HideDisplay();
     }
     // Скрывает предмет и вызывает AddItem(int ItemId) для добавления этого предмета в инвентарь.
