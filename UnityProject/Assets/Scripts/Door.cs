@@ -74,6 +74,8 @@ public class Door : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
                     TextBubble.Instance.AddItemsToShow(LstItems);
             }
             Debug.Log(TextBubble.ItemsToShow.Count);
+            if (LocationSceneName == "EndingScene")
+                Ending.Instance.ShowEnding(true);
             SceneManager.LoadScene(LocationSceneName);
         }
         else 

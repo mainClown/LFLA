@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UIElements;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class TextBubble : MonoBehaviour
 {
@@ -73,6 +74,11 @@ public class TextBubble : MonoBehaviour
 
     void ShowTextBubble()
     {
+        Scene scene = SceneManager.GetActiveScene();
+        if (scene.name == "EndingScene")
+        {
+            ItemsToShow = new List<int> { };
+        }
         if (IsActive == false){
             CurrentMsgId = CurrentMsgId + 1;
             if (CurrentMsgId >= ItemsToShow.Count)
