@@ -4,12 +4,15 @@ using UnityEngine;
 using System.IO;
 using System.Text;
 using System.Linq;
+using TMPro;
 
 public class Ending : MonoBehaviour
 {
     public string EndingText;
     public string MainTextFile = "EndingTexts.csv";
     public string ItemsTextFile = "EndingTextsForItems.csv";
+    public GameObject textB;
+    public TMP_Text TextField;
 
     private Dictionary<string, string> mainTextDictionary = new Dictionary<string, string>();
     private Dictionary<string, ItemText> itemsDictionary = new Dictionary<string, ItemText>();
@@ -70,25 +73,29 @@ public class Ending : MonoBehaviour
         }
     }
 
-    //    public static Ending Instance { get; private set; }
-    //    #region Singleton паттерн
-    //    private void Awake()
-    //    {
-    //        if (Instance != null && Instance != this)
-    //        {
-    //            Destroy(this);
-    //        }
-    //        else
-    //        {
-    //            Instance = this;
-    //            DontDestroyOnLoad(target: this);
-    //        }
-    //    }
-    //    #endregion
-
-    public void ShowEnding(bool inTime, string EndingText)
+    public static Ending Instance { get; private set; }
+    #region Singleton паттерн
+    private void Awake()
     {
-        EndingText = GenerateEndingText(inTime, collectedItems);
+        if (Instance != null && Instance != this)
+        {
+            Destroy(this);
+        }
+        else
+        {
+            Instance = this;
+            DontDestroyOnLoad(target: this);
+        }
+    }
+    #endregion
+
+    public void ShowEnding(bool inTime)
+    {
+        EndingText = GenerateEndingText(inTime, Inventory.SelectedItems);
+        if (EndingText == null)
+            EndingText = "";
+        textB.SetActive(true);
+        TextField.SetText(EndingText);
     }
 
     public string GenerateEndingText(bool inTime, List<Item> collectedItems)
@@ -97,22 +104,22 @@ public class Ending : MonoBehaviour
 
         if (inTime)
         {
-            endingTextBuilder.Append(mainTextDictionary["InTime"]);
+            endingTextBuilder.Append(mainTextDictionary["InTime"]).Append(" ");
 
             // 7 обязательных предметов, 9 пкфк
             int numberOfItems = collectedItems.Count;
 
             if (numberOfItems == 7)
             {
-                endingTextBuilder.Append(mainTextDictionary["ItemsNotTaken"]);
+                endingTextBuilder.Append(mainTextDictionary["ItemsNotTaken"]).Append(" ");
             }
             else if (numberOfItems < 11)
             {
-                endingTextBuilder.Append(mainTextDictionary["SomeItemsTaken"]);
+                endingTextBuilder.Append(mainTextDictionary["SomeItemsTaken"]).Append(" ");
             }
             else
             {
-                endingTextBuilder.Append(mainTextDictionary["AllItemsTaken"]);
+                endingTextBuilder.Append(mainTextDictionary["AllItemsTaken"]).Append(" ");
             }
 
             foreach (var row in itemsDictionary)
@@ -122,20 +129,20 @@ public class Ending : MonoBehaviour
 
                 if (collectedItems.Any(item => item.Name == key))
                 {
-                    endingTextBuilder.Append(itemData.Taken);
+                    endingTextBuilder.Append(itemData.Taken).Append(" ");
                 }
                 else
                 {
-                    endingTextBuilder.Append(itemData.NotTaken);
+                    endingTextBuilder.Append(itemData.NotTaken).Append(" ");
                 }
             }
         }
         else
         {
-            endingTextBuilder.Append(mainTextDictionary["Late"]);
+            endingTextBuilder.Append(mainTextDictionary["Late"]).Append(" ");
         }
 
-        return endingTextBuilder.ToString(); ;
+        return endingTextBuilder.ToString().Trim();
     }
 
 }
