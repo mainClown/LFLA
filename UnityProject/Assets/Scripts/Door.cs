@@ -70,10 +70,21 @@ public class Door : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
                         }
                     }
                 }
+                if (TextBubble.ItemsToShow.Count > 0)
+                {
+                    for (int i = 0; i < LstItems.Count; i++)
+                    {
+                        for (int j = 0; j < InventoryItems.Count; j++)
+                        {
+                            if (LstItems[i] == InventoryItems[j])
+                                NoLocationItemsInMesgs = false;
+                        }
+                    }
+                }
                 if (NoLocationItemsInMesgs)
                     TextBubble.Instance.AddItemsToShow(LstItems);
             }
-            Debug.Log(TextBubble.ItemsToShow.Count);
+            //Debug.Log(TextBubble.ItemsToShow.Count);
             if (LocationSceneName == "EndingScene")
                 Ending.Instance.ShowEnding(true);
             SceneManager.LoadScene(LocationSceneName);

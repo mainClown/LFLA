@@ -312,8 +312,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5b11fd55b204364a898400bad40583e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Name: "\u0423\u043C\u044B\u0442\u044C\u0441\u044F (\u0445\u0437 \u043F\u0435\u0440\u0435\u0438\u043C\u0435\u043D\u0443\u0439\u0442\u0435
-    \u0441\u0430\u043C\u0438 \u0432\u0441\u0435 \u043F\u043E\u0434\u043F\u0438\u0441\u0438)"
+  Name: "\u0420\u0430\u043A\u043E\u0432\u0438\u043D\u0430"
   ItemId: 16
   InventorySprite: {fileID: 0}
   HighlightSprite: {fileID: 21300000, guid: a3a27a5be3f9a324788d09bc9f6d175d, type: 3}
@@ -889,7 +888,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NecessaryItems: 140000000f000000
   LocationSceneName: HallScene
-  LocationDisplay: "\u0412 \u043A\u043E\u0440\u0438\u0434\u043E\u0440"
+  LocationDisplay: "\u041A\u043E\u0440\u0438\u0434\u043E\u0440"
   NextLocationItems: none
   HighlightSprite: {fileID: 21300000, guid: 399e5a2d8a50fc7449cebd63adb786d5, type: 3}
   NoHighlightSprite: {fileID: 21300000, guid: 399e5a2d8a50fc7449cebd63adb786d5, type: 3}
@@ -981,7 +980,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5b11fd55b204364a898400bad40583e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Name: "\u0441\u0443\u0445\u043E\u0439\u044A \u0448\u0430\u043C\u043F\u0443\u0443"
+  Name: "\u0421\u0443\u0445\u043E\u0439 \u0448\u0430\u043C\u043F\u0443\u043D\u044C"
   ItemId: 17
   InventorySprite: {fileID: 21300000, guid: 5229dd1ccb2df664fa00a44ebc01d077, type: 3}
   HighlightSprite: {fileID: 21300000, guid: 2f98221e8d7d06b43b0736ee97019544, type: 3}
@@ -1074,7 +1073,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5b11fd55b204364a898400bad40583e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Name: "*\u0443\u043D\u0438\u0447\u0442\u043E\u0436\u0430\u044E\u0449\u0438\u0439_\u0437\u0430\u043F\u0430\u0445_10K*"
+  Name: "\u0414\u0435\u0437\u043E\u0434\u043E\u0440\u0430\u043D\u0442"
   ItemId: 19
   InventorySprite: {fileID: 21300000, guid: 39fc4a466af609b4c97d1a80387badfb, type: 3}
   HighlightSprite: {fileID: 21300000, guid: ede58ec6f0d4ca646a3ebfb9a07d3153, type: 3}
@@ -1269,7 +1268,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5b11fd55b204364a898400bad40583e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Name: Bruh..
+  Name: "\u0420\u0430\u0441\u0447\u0435\u0441\u043A\u0430"
   ItemId: 20
   InventorySprite: {fileID: 21300000, guid: ee1ee3b248cd1184bae2933c85bb8061, type: 3}
   HighlightSprite: {fileID: 21300000, guid: e3ac528e5d58d374091ebd62f6d00c29, type: 3}
@@ -1362,7 +1361,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5b11fd55b204364a898400bad40583e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Name: "\u043A\u043E\u043B\u0451\u0441\u0430"
+  Name: "\u0422\u0430\u0431\u043B\u0435\u0442\u043D\u0438\u0446\u0430"
   ItemId: 18
   InventorySprite: {fileID: 21300000, guid: 99720c9ff9abf4940beb311051b0c31d, type: 3}
   HighlightSprite: {fileID: 21300000, guid: 9edd170ac168cd04388718b9f9f42b18, type: 3}
