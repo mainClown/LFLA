@@ -17,7 +17,7 @@ public class Timer : MonoBehaviour
     private static bool IsMiniGamePlaying;
     private static bool IsPaused;
     
-    #region Singleton паттерн
+    #region Singleton пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -41,15 +41,15 @@ public class Timer : MonoBehaviour
         {
             while (IsPaused)
             {
-                yield return null; // Ждем до следующего кадра
+                yield return null; // пїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
             }
-            if (IsMiniGamePlaying) //Запущена мини-игра - работает таймер мини-игры
+            if (IsMiniGamePlaying) //пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ-пїЅпїЅпїЅпїЅ - пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ-пїЅпїЅпїЅпїЅ
             {
                 UpdateVisuals(MiniGameTimer);
                 yield return new WaitForSeconds(1);
                 MiniGameTimer--;
             }
-            else // Иначе работает таймер локаций
+            else // пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
             {
                 UpdateVisuals(LocationTimer);
                 yield return new WaitForSeconds(1);

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
-using TMPro.Examples;
+// using TMPro.Examples;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -11,23 +11,23 @@ using UnityEngine.UIElements;
 
 public class NewDoor : MonoBehaviour
 {
-    public GameObject ItemsContainerObject; // Объект содержимого всех предметов локации, включая двери.
+    public GameObject ItemsContainerObject; // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ.
     private static List<int> InventoryItems;
-    private Transform[] ItemsList; // Список всех предметов в ItemsContainerObject
-    public static GameObject NameDisplay { get; private set; } // Ссылка на UI текст для отображения имени
+    private Transform[] ItemsList; // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ ItemsContainerObject
+    public static GameObject NameDisplay { get; private set; } // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ UI пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
     private static GameObject DisplayText;
     private static GameObject DisplayBackground;
     public static NewDoor Instance { get; private set; }
-    #region Singleton паттерн
+    #region Singleton пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
     private void Awake()
     {
         Instance = this;
-        // Найти PersistentCanvas и получить ссылку на nameDisplay
+        // пїЅпїЅпїЅпїЅпїЅ PersistentCanvas пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ nameDisplay
         GameObject UICanvas = GameObject.Find("UICanvas");
 
         if (UICanvas != null)
         {
-            NameDisplay = UICanvas.transform.Find("NameDisplay").gameObject; // Замените "NameDisplayObject" на имя вашего экземпляра
+            NameDisplay = UICanvas.transform.Find("NameDisplay").gameObject; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ "NameDisplayObject" пїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
             DisplayText = NameDisplay.transform.Find("DisplayText").gameObject;
             DisplayBackground = NameDisplay.transform.Find("DisplayBackground").gameObject;
             NameDisplay.gameObject.SetActive(false);
@@ -41,7 +41,7 @@ public class NewDoor : MonoBehaviour
         Inventory.Instance.GetComponent<Canvas>().worldCamera = mainCamera;
         if (ItemsContainerObject != null)
         {
-            InventoryItems = Inventory.Instance.GetItemsID(); // Получаем ID предметов из инвентаря
+            InventoryItems = Inventory.Instance.GetItemsID(); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ ID пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
             ItemsList = ItemsContainerObject.GetComponentsInChildren<Transform>();
             foreach (Transform childObject in ItemsList)
             {
@@ -50,11 +50,11 @@ public class NewDoor : MonoBehaviour
                 {
                     foreach (int itemId in InventoryItems)
                     {
-                        if (item.ItemId == itemId) //Если предмет в локации есть в инвентаре, он скрывается
+                        if (item.ItemId == itemId) //пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
                         {
                             item.gameObject.SetActive(false);
                         }
-                        else // иначе добавляется в ItemsToShow 
+                        else // пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ ItemsToShow 
                         {
                             //button.onClick.AddListener(OnButtonClick);
                             //TextBubble.Instance.AddItemsToShow(item.ItemId);
@@ -76,26 +76,26 @@ public class NewDoor : MonoBehaviour
     }
     private static void UpdateDisplaySize()
     {
-        // Обновляем размер фона в соответствии с размером текста
+        // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
         RectTransform textRectTransform = DisplayText.GetComponent<RectTransform>();
         RectTransform BGRectTransform = DisplayBackground.GetComponent<RectTransform>();
         Vector2 textSize = new Vector2(textRectTransform.rect.width, textRectTransform.rect.height);
 
-        // Добавляем немного отступов
+        // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
         float padding = 10f;
         BGRectTransform.sizeDelta = new Vector2(textSize.x + padding, textSize.y + padding);
     }
     private Vector2 GetRectTransformScreenSize(RectTransform rect)
     {
-        // Массив для получения углов RectTransform
+        // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ RectTransform
         Vector3[] worldCorners = new Vector3[4];
         rect.GetWorldCorners(worldCorners);
 
-        // Преобразование углов в экранные координаты
+        // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
         Vector2 bottomLeft = Camera.main.WorldToScreenPoint(worldCorners[0]);
         Vector2 topRight = Camera.main.WorldToScreenPoint(worldCorners[2]);
 
-        // Вычисление ширины и высоты
+        // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
         float width = topRight.x - bottomLeft.x;
         float height = topRight.y - bottomLeft.y;
 
@@ -103,42 +103,42 @@ public class NewDoor : MonoBehaviour
     }
     void Update()
     {
-        // Получаем позицию мыши на экране
+        // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
         Vector3 mousePosition = Input.mousePosition;
         RectTransform textRectTransform = DisplayText.GetComponent<RectTransform>();
         
-        // Определяем ширину и высоту экрана
+        // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
         float screenWidth = Screen.width;
         float screenHeight = Screen.height;
 
-        // Проверяем, насколько близко курсор к краям экрана
+        // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
         Vector2 TextScreenSize = GetRectTransformScreenSize(textRectTransform);
         float textWidth = TextScreenSize.x;
         float textHeight = TextScreenSize.y;
-        // Если курсор близок к правому краю, размещаем подсказку слева от курсора
+        // пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
         if (mousePosition.x + textWidth / 2 > screenWidth / 2)
         {
             mousePosition.x -= textWidth / 2;
         }
-        // Если курсор близок к левому краю, размещаем подсказку справа от курсора
+        // пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
         else
         {
             mousePosition.x += textWidth / 2;
         }
 
-        // Если курсор близок к верхнему краю, размещаем подсказку ниже курсора
+        // пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
         if (mousePosition.y + textHeight / 2 > screenHeight / 2)
         {
             mousePosition.y -= textHeight;
         }
-        // Если курсор близок к нижнему краю, размещаем подсказку выше курсора
+        // пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
         else
         {
             mousePosition.y += textHeight;
         }
         mousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
         mousePosition.z = 0;
-        // Перемещаем объект к позиции мыши
+        // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
         NameDisplay.transform.position = mousePosition;
         UpdateDisplaySize();
     }
