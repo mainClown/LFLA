@@ -13,7 +13,8 @@ public class Door : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
     public List<int> NecessaryItems; // айдишники обязательных предметов для открытия этой двери
     public string LocationSceneName; //куда ведёт
     public string LocationDisplay; //что вывести на экран подсказки
-    public string NextLocationItems; //да тупо, но строка с айди предметов в сделующей локации для TextBubble
+    public string NextLocationItems; //да тупо, но строка с айди предметов в следующей локации для TextBubble
+    //Почему строка? а не List<int> как NecessaryItems?
     public Sprite HighlightSprite;
     public Sprite NoHighlightSprite;
     private Image DoorImageObject;
@@ -86,8 +87,15 @@ public class Door : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
             }
             //Debug.Log(TextBubble.ItemsToShow.Count);
             if (LocationSceneName == "EndingScene")
-                Ending.Instance.ShowEnding(true);
-            SceneManager.LoadScene(LocationSceneName);
+            {
+                Ending.Instance.SetEndingType(true);
+                SceneManager.LoadScene(LocationSceneName);
+                Destroy(GameObject.Find("UICanvas"));
+            }
+            else
+            {
+                SceneManager.LoadScene(LocationSceneName);
+            }
         }
         else 
         {

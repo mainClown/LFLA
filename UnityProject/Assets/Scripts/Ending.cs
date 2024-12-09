@@ -5,17 +5,33 @@ using System.IO;
 using System.Text;
 using System.Linq;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class Ending : MonoBehaviour
 {
     public string EndingText;
     public string MainTextFile = "EndingTexts.csv";
     public string ItemsTextFile = "EndingTextsForItems.csv";
-    public GameObject textB;
-    public TMP_Text TextField;
 
+    private TMP_Text TextField;
     private Dictionary<string, string> mainTextDictionary = new Dictionary<string, string>();
     private Dictionary<string, ItemText> itemsDictionary = new Dictionary<string, ItemText>();
+    private bool inTime; //Показалось что лучше сделать переменную полем класса, можно ещё статичным его сделать.
+    public static Ending Instance { get; private set; }
+    #region Singleton паттерн
+    private void Awake()
+    {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(this);
+        }
+        else
+        {
+            Instance = this;
+            DontDestroyOnLoad(target: this);
+        }
+    }
+    #endregion
 
     [System.Serializable]
     public class ItemText
@@ -33,8 +49,17 @@ public class Ending : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        SceneManager.sceneLoaded += OnSceneLoaded; //Подписка на событие sceneLoaded
         LoadMainTextFile();
         LoadItemsTextFile();
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        if (scene.name == "EndingScene")
+        {
+            ShowEnding();
+        }
     }
 
     private void LoadMainTextFile()
@@ -72,32 +97,25 @@ public class Ending : MonoBehaviour
             }
         }
     }
-
-    public static Ending Instance { get; private set; }
-    #region Singleton паттерн
-    private void Awake()
-    {
-        if (Instance != null && Instance != this)
-        {
-            Destroy(this);
-        }
-        else
-        {
-            Instance = this;
-            DontDestroyOnLoad(target: this);
-        }
-    }
-    #endregion
-
-    public void ShowEnding(bool inTime)
+    private void ShowEnding() // Получается ShowEnding у нас стал приватным, я хз как всё вместе сделать - и назначение переменной и вызов метода,
+                              // потому что надо ещё обрабатывать то, в какую сцену мы попали событием OnSceneLoaded
     {
         EndingText = GenerateEndingText(inTime, Inventory.SelectedItems);
         if (EndingText == null)
             EndingText = "";
-        textB.SetActive(true);
+        GameObject EndingCanvas = GameObject.Find("EndingCanvas");
+        if (EndingCanvas)
+        {
+            GameObject textB = EndingCanvas.transform.Find("EndingObj").gameObject;
+            TextField = textB.transform.Find("EndText").gameObject.GetComponent<TMP_Text>();
+        }
         TextField.SetText(EndingText);
     }
-
+    public void SetEndingType(bool inTime) //Подумывал вообще inTime сделать статичным полем,
+                                              //но сперва сделал так чтобы работало вообще.
+    {
+        this.inTime = inTime;
+    }
     public string GenerateEndingText(bool inTime, List<Item> collectedItems)
     {
         StringBuilder endingTextBuilder = new StringBuilder();

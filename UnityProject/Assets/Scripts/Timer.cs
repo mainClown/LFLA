@@ -56,6 +56,9 @@ public class Timer : MonoBehaviour
                 LocationTimer--;
             }
         }
+        Ending.Instance.SetEndingType(false);
+        SceneManager.LoadScene("EndingScene");
+        Destroy(GameObject.Find("UICanvas"));
     }
     public void TogglePause() 
     {
@@ -74,10 +77,11 @@ public class Timer : MonoBehaviour
             TimerText.GetComponent<TextMeshProUGUI>().text = formattedTime;
             TimerText.GetComponent<TextMeshProUGUI>().color = Color.white;
         }
-        if (TimerType == 0)
-        {
-            Ending.Instance.ShowEnding(false);
-            SceneManager.LoadScene("EndingScene");
-        }
+        //if (TimerType == 0)
+        //{
+        //    Ending.Instance.ShowEnding(false);
+        //    Destroy(GameObject.Find("UICanvas"));
+        //    SceneManager.LoadScene("EndingScene");
+        //}
     }
 }
