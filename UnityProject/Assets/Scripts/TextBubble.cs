@@ -33,7 +33,6 @@ public class TextBubble : MonoBehaviour
             AddItemsToShow(new List<int>(new int[] { 1, 2, 3, 4, 5, 6, 7 }));
             dataLines = textBText.text.Split('\n');
             InvokeRepeating("ShowTextBubble", 0, 5.0f);
-            DontDestroyOnLoad(target: this);
         }
     }
     #endregion

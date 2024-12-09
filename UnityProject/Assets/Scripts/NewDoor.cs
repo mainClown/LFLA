@@ -17,17 +17,14 @@ public class NewDoor : MonoBehaviour
     public static GameObject NameDisplay { get; private set; } // ������ �� UI ����� ��� ����������� �����
     private static GameObject DisplayText;
     private static GameObject DisplayBackground;
-    public static NewDoor Instance { get; private set; }
     #region Singleton �������
     private void Awake()
     {
-        Instance = this;
-        // ����� PersistentCanvas � �������� ������ �� nameDisplay
         GameObject UICanvas = GameObject.Find("UICanvas");
 
         if (UICanvas != null)
         {
-            NameDisplay = UICanvas.transform.Find("NameDisplay").gameObject; // �������� "NameDisplayObject" �� ��� ������ ����������
+            NameDisplay = UICanvas.transform.Find("NameDisplay").gameObject; 
             DisplayText = NameDisplay.transform.Find("DisplayText").gameObject;
             DisplayBackground = NameDisplay.transform.Find("DisplayBackground").gameObject;
             NameDisplay.gameObject.SetActive(false);
@@ -56,8 +53,6 @@ public class NewDoor : MonoBehaviour
                         }
                         else // ����� ����������� � ItemsToShow 
                         {
-                            //button.onClick.AddListener(OnButtonClick);
-                            //TextBubble.Instance.AddItemsToShow(item.ItemId);
                         }
                     }
                 }
@@ -72,7 +67,10 @@ public class NewDoor : MonoBehaviour
     }
     public static void HideDisplay() 
     {
-        NameDisplay.gameObject.SetActive(false);
+        if (NameDisplay)
+        {
+            NameDisplay.gameObject.SetActive(false);
+        }
     }
     private static void UpdateDisplaySize()
     {
