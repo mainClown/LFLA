@@ -431,9 +431,12 @@ GameObject:
   - component: {fileID: 787599330}
   - component: {fileID: 787599329}
   - component: {fileID: 787599331}
+  - component: {fileID: 787599332}
+  - component: {fileID: 787599334}
+  - component: {fileID: 787599335}
   m_Layer: 0
   m_Name: fridge
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -512,6 +515,90 @@ MonoBehaviour:
   InventorySprite: {fileID: 0}
   HighlightSprite: {fileID: 21300000, guid: 46238b696879aa84eb995a6b603ad613, type: 3}
   NoHighlightSprite: {fileID: 21300000, guid: 5b27bf4b463092b4c892555c2dbdbb4c, type: 3}
+--- !u!114 &787599332
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 787599325}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5eb540dca67623e4dbcfc5f6684a29c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  plate: {fileID: 0}
+  rb_plate: {fileID: 0}
+  productPrefabs: []
+  LocationSceneName: 
+  locationButton: {fileID: 0}
+  smoothSpeed: 50000
+  maxX: 0
+  minX: 0
+  width: 437
+  spawnRate: 3
+  minFallSpeed: 1.5
+  maxFallSpeed: 15
+  CanvasUI: {fileID: 1098857531470199046, guid: 357a8a33577bbd7459b86560228ad707, type: 3}
+--- !u!61 &787599334
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 787599325}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
+--- !u!114 &787599335
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 787599325}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85358724f24f49d48bf41aee55863c67, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneToLoad: KitchenMiniGameScene
+  CanvasUI: {fileID: 0}
 --- !u!1 &1064437614
 GameObject:
   m_ObjectHideFlags: 0

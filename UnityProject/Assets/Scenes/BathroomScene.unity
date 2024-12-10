@@ -236,6 +236,7 @@ GameObject:
   - component: {fileID: 204262657}
   - component: {fileID: 204262656}
   - component: {fileID: 204262658}
+  - component: {fileID: 204262659}
   m_Layer: 0
   m_Name: sink
   m_TagString: Untagged
@@ -317,6 +318,20 @@ MonoBehaviour:
   InventorySprite: {fileID: 0}
   HighlightSprite: {fileID: 21300000, guid: a3a27a5be3f9a324788d09bc9f6d175d, type: 3}
   NoHighlightSprite: {fileID: 21300000, guid: 876a32bd96c1413429e232af415b2167, type: 3}
+--- !u!114 &204262659
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 204262652}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85358724f24f49d48bf41aee55863c67, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneToLoad: BathroomMiniGameScene
+  CanvasUI: {fileID: 1098857531470199046, guid: 357a8a33577bbd7459b86560228ad707, type: 3}
 --- !u!1 &409842054
 GameObject:
   m_ObjectHideFlags: 0

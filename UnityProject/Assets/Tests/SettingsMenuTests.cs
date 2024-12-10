@@ -8,7 +8,7 @@ using System.Collections;
 [TestFixture]
 public class SettingsMenuTests
 {
-    // РџРѕР»СЏ РґР»СЏ РѕР±СЉРµРєС‚РѕРІ
+    // Поля для объектов
     private GameObject settingsMenuObject;
     private SettingsMenu settingsMenu;
     private GameObject pauseUI;
@@ -18,15 +18,15 @@ public class SettingsMenuTests
     private Toggle easySwitch;
     private Toggle hardSwitch;
 
-    // РњРµС‚РѕРґ РґР»СЏ РїРѕРґРіРѕС‚РѕРІРєРё С‚РµСЃС‚Р° (Setup)
+    // Метод для подготовки теста (Setup)
     [SetUp]
     public void Setup()
     {
-        // РЎРѕР·РґР°РµРј РѕР±СЉРµРєС‚ SettingsMenu
+        // Создаем объект SettingsMenu
         settingsMenuObject = new GameObject("SettingsMenu");
         settingsMenu = settingsMenuObject.AddComponent<SettingsMenu>();
 
-        // РЎРѕР·РґР°РµРј РѕР±СЉРµРєС‚С‹ UI
+        // Создаем объекты UI
         pauseUI = new GameObject("PauseUI");
         settingsUI = new GameObject("SettingsUI");
         soundSlider = new GameObject("SoundSlider").AddComponent<Slider>();
@@ -34,7 +34,7 @@ public class SettingsMenuTests
         easySwitch = new GameObject("EasySwitch").AddComponent<Toggle>();
         hardSwitch = new GameObject("HardSwitch").AddComponent<Toggle>();
 
-        // РџСЂРёРІСЏР·С‹РІР°РµРј РѕР±СЉРµРєС‚С‹ UI Рє РєРѕРјРїРѕРЅРµРЅС‚Р°Рј SettingsMenu
+        // Привязываем объекты UI к компонентам SettingsMenu
         settingsMenu.PauseUI = pauseUI;
         settingsMenu.SettingsUI = settingsUI;
         settingsMenu.SoundSlider = soundSlider;
@@ -42,31 +42,31 @@ public class SettingsMenuTests
         settingsMenu.EasySwitch = easySwitch;
         settingsMenu.HardSwitch = hardSwitch;
 
-        // РќР°СЃС‚СЂРѕРёРј РЅР°С‡Р°Р»СЊРЅС‹Рµ Р·РЅР°С‡РµРЅРёСЏ РІ PlayerPrefs
+        // Настроим начальные значения в PlayerPrefs
         PlayerPrefs.DeleteAll();
-        PlayerPrefs.SetFloat("SoundVolume", 40f / 100f);  
-        PlayerPrefs.SetFloat("MusicVolume", 60f / 100f); 
-        PlayerPrefs.SetInt("EasyMode", 0);         
+        PlayerPrefs.SetFloat("SoundVolume", 40f / 100f);
+        PlayerPrefs.SetFloat("MusicVolume", 60f / 100f);
+        PlayerPrefs.SetInt("EasyMode", 0);
         PlayerPrefs.Save();
     }
 
     [UnityTest]
     public IEnumerator B5_OpenSettingsMenu_ShowsCorrectValues()
     {
-        // РћС‚РєСЂС‹РІР°РµРј РјРµРЅСЋ РЅР°СЃС‚СЂРѕРµРє
+        // Открываем меню настроек
         settingsMenu.OpenSettingsMenu();
 
-        // Р–РґРµРј РѕРґРёРЅ РєР°РґСЂ, С‡С‚РѕР±С‹ РёР·РјРµРЅРµРЅРёСЏ РІСЃС‚СѓРїРёР»Рё РІ СЃРёР»Сѓ
+        // Ждем один кадр, чтобы изменения вступили в силу
         yield return null;
 
-        // РџСЂРѕРІРµСЂСЏРµРј, С‡С‚Рѕ SettingsUI СЃС‚Р°Р»Рѕ Р°РєС‚РёРІРЅС‹Рј (РјРµРЅСЋ РѕС‚РєСЂС‹С‚Рѕ)
+        // Проверяем, что SettingsUI стало активным (меню открыто)
         Assert.IsTrue(settingsUI.activeSelf, "Settings UI is not visible");
 
-        // РџСЂРѕРІРµСЂСЏРµРј, С‡С‚Рѕ СЃР»Р°Р№РґРµСЂС‹ РёРјРµСЋС‚ РїСЂР°РІРёР»СЊРЅС‹Рµ Р·РЅР°С‡РµРЅРёСЏ
+        // Проверяем, что слайдеры имеют правильные значения
         Assert.AreEqual(0.4f, soundSlider.value, "Sound volume is incorrect");
         Assert.AreEqual(0.6f, musicSlider.value, "Music volume is incorrect");
 
-        // РџСЂРѕРІРµСЂСЏРµРј, С‡С‚Рѕ РїРµСЂРµРєР»СЋС‡Р°С‚РµР»Рё РЅР°СЃС‚СЂРѕРµРЅС‹ РїСЂР°РІРёР»СЊРЅРѕ
+        // Проверяем, что переключатели настроены правильно
         Assert.IsFalse(easySwitch.isOn, "Easy mode switch is incorrect (should be off for Hard mode)");
         Assert.IsTrue(hardSwitch.isOn, "Hard mode switch is incorrect (should be on for Hard mode)");
     }
@@ -74,40 +74,40 @@ public class SettingsMenuTests
     [Test]
     public void B5a_OpenSettingsMenu_InvalidPrefabName()
     {
-        // РџРѕРїС‹С‚РєР° Р·Р°РіСЂСѓР·РёС‚СЊ РЅРµСЃСѓС‰РµСЃС‚РІСѓСЋС‰РёР№ РїСЂРµС„Р°Р±
+        // Попытка загрузить несуществующий префаб
         GameObject settingsMenuObject = Resources.Load<GameObject>("SettingsMenu_Missing");
 
-        // РџСЂРѕРІРµСЂСЏРµРј, С‡С‚Рѕ РѕР±СЉРµРєС‚ СЃ С‚Р°РєРёРј РёРјРµРЅРµРј РЅРµ РЅР°Р№РґРµРЅ
+        // Проверяем, что объект с таким именем не найден
         Assert.IsNull(settingsMenuObject, "Prefab 'SettingsMenu_Missing' should not exist in Resources.");
 
         try
         {
-            // РџС‹С‚Р°РµРјСЃСЏ РІС‹РїРѕР»РЅРёС‚СЊ РґРµР№СЃС‚РІРёСЏ СЃ РЅРµСЃСѓС‰РµСЃС‚РІСѓСЋС‰РёРј РѕР±СЉРµРєС‚РѕРј
+            // Пытаемся выполнить действия с несуществующим объектом
             SettingsMenu settingsMenuScript = settingsMenuObject.GetComponent<SettingsMenu>();
 
-            // Р’С‹Р·С‹РІР°РµРј РјРµС‚РѕРґ, РєРѕС‚РѕСЂС‹Р№ РґРѕР»Р¶РµРЅ РІС‹Р±СЂРѕСЃРёС‚СЊ РёСЃРєР»СЋС‡РµРЅРёРµ
+            // Вызываем метод, который должен выбросить исключение
             settingsMenuScript.OpenSettingsMenu();
 
-            // Р•СЃР»Рё РёСЃРєР»СЋС‡РµРЅРёРµ РЅРµ РІС‹Р±СЂРѕСЃРёР»РѕСЃСЊ, С‚РµСЃС‚ РїСЂРѕРІР°Р»РµРЅ
+            // Если исключение не выбросилось, тест провален
             Assert.Fail("Expected NullReferenceException was not thrown.");
         }
         catch (NullReferenceException)
         {
-            // Р•СЃР»Рё РІС‹Р±СЂРѕСЃРёР»РѕСЃСЊ NullReferenceException, С‚Рѕ С‚РµСЃС‚ РїСЂРѕС…РѕРґРёС‚
+            // Если выбросилось NullReferenceException, то тест проходит
             Assert.Pass("NullReferenceException thrown as expected.");
         }
         catch (Exception ex)
         {
-            // Р•СЃР»Рё РІС‹Р±СЂР°СЃС‹РІР°РµС‚СЃСЏ РґСЂСѓРіРѕРµ РёСЃРєР»СЋС‡РµРЅРёРµ, С‚РµСЃС‚ РїСЂРѕРІР°Р»РµРЅ
+            // Если выбрасывается другое исключение, тест провален
             Assert.Fail($"Unexpected exception thrown: {ex.Message}");
         }
     }
 
-    // РњРµС‚РѕРґ РґР»СЏ РѕС‡РёСЃС‚РєРё РїРѕСЃР»Рµ С‚РµСЃС‚Р° (Teardown)
+    // Метод для очистки после теста (Teardown)
     [TearDown]
     public void Teardown()
     {
-        // РЈРґР°Р»СЏРµРј РІСЃРµ СЃРѕР·РґР°РЅРЅС‹Рµ РѕР±СЉРµРєС‚С‹ РїРѕСЃР»Рµ С‚РµСЃС‚Р°
-        UnityEngine.Object.DestroyImmediate(settingsMenuObject); // РСЃРїСЂР°РІР»РµРЅРѕ: РёСЃРїРѕР»СЊР·СѓРµРј UnityEngine.Object
+        // Удаляем все созданные объекты после теста
+        UnityEngine.Object.DestroyImmediate(settingsMenuObject); // Исправлено: используем UnityEngine.Object
     }
 }

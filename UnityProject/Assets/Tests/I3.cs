@@ -2,6 +2,7 @@ using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using static UnityEditor.Progress;
 
 public class InventoryIntegrationTest
 {
@@ -9,7 +10,7 @@ public class InventoryIntegrationTest
     public void TestAddItemToInventory()
     {
         // Arrange
-        // РЎРѕР·РґР°РµРј С‚РµСЃС‚РѕРІС‹Рµ РґР°РЅРЅС‹Рµ
+        // Создаем тестовые данные
         Item item1 = new GameObject().AddComponent<Item>();
         item1.Name = "Clothes";
         item1.ItemId = 1;
@@ -37,24 +38,24 @@ public class InventoryIntegrationTest
         inventory.CanvasUI = new GameObject();
         inventory.ItemCounter = new GameObject();
 
-        // Р”РѕР±Р°РІР»СЏРµРј РєРѕРјРїРѕРЅРµРЅС‚С‹, РЅРµРѕР±С…РѕРґРёРјС‹Рµ РґР»СЏ СЂР°Р±РѕС‚С‹ Inventory
+        // Добавляем компоненты, необходимые для работы Inventory
         inventory.InventoryUI.AddComponent<Image>();
         inventory.CellContainerObject.AddComponent<Image>();
         inventory.ItemCounter.AddComponent<TextMeshProUGUI>();
 
-        // Р”РѕР±Р°РІР»СЏРµРј РґРѕС‡РµСЂРЅРёР№ РѕР±СЉРµРєС‚ РІ CellContainerObject
+        // Добавляем дочерний объект в CellContainerObject
         GameObject cellObject = new GameObject("Cell");
         cellObject.transform.SetParent(inventory.CellContainerObject.transform);
         cellObject.AddComponent<Image>();
 
         // Act
-        // Р”РѕР±Р°РІР»СЏРµРј РїСЂРµРґРјРµС‚С‹ РІ РёРЅРІРµРЅС‚Р°СЂСЊ
+        // Добавляем предметы в инвентарь
         inventory.AddItem(item1);
         inventory.AddItem(item2);
         inventory.AddItem(item3);
 
         // Assert
-        // РџСЂРѕРІРµСЂСЏРµРј, С‡С‚Рѕ РїСЂРµРґРјРµС‚С‹ РґРѕР±Р°РІР»РµРЅС‹ РІ РёРЅРІРµРЅС‚Р°СЂСЊ
+        // Проверяем, что предметы добавлены в инвентарь
         Assert.AreEqual(3, Inventory.SelectedItems.Count);
         Assert.IsTrue(Inventory.SelectedItems.Contains(item1));
         Assert.IsTrue(Inventory.SelectedItems.Contains(item2));

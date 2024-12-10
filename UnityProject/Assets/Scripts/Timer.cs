@@ -35,7 +35,7 @@ public class Timer : MonoBehaviour
         }
     }
     #endregion
-    public IEnumerator DoTimer()
+    public IEnumerator DoTimer() 
     {
         while (LocationTimer >= 0)
         {
