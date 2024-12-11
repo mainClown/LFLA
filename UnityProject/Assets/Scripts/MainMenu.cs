@@ -1,15 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+#if UNITY_EDITOR
+using UnityEditor.SearchService;
+#endif
 
 public class MainMenu : MonoBehaviour
 {
     public void StartNewGame() 
     {
-        //TextBubble методы перенёс в его Awake
+        //TextBubble пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅ Awake
         SceneManager.LoadScene("BedroomScene");
     }
 
@@ -18,7 +20,33 @@ public class MainMenu : MonoBehaviour
         Application.Quit();
     }
 
-    /*Если тоже как и в Door.cs нужна задержка по времени или по условию, использовать асинхронный метод и корутину
+    // Р”Р»СЏ С‚РµСЃС‚Р° Р’4Р° - РёРјРёС‚Р°С†РёСЏ РѕС€РёР±РѕРє
+    // public void Exit()
+    // {
+    //     try
+    //     {
+    //         // РРјРёС‚Р°С†РёСЏ РѕС€РёР±РєРё
+    //         if (HasActiveProcesses())
+    //         {
+    //             throw new Exception("Cannot quit: active processes detected");
+    //         }
+
+    //         Application.Quit();
+    //     }
+    //     catch (Exception ex)
+    //     {
+    //         Debug.LogError($"Error during quit: {ex.Message}");
+    //     }
+    // }
+
+    // private bool HasActiveProcesses()
+    // {
+    //     // РРјРёС‚Р°С†РёСЏ РїСЂРѕРІРµСЂРєРё РЅР° Р°РєС‚РёРІРЅС‹Рµ РїСЂРѕС†РµСЃСЃС‹
+    //     return true; // Р’РµСЂРЅСѓС‚СЊ true РґР»СЏ РёРјРёС‚Р°С†РёРё РѕС€РёР±РєРё
+    // }
+    
+
+    /*пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅ пїЅ Door.cs пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
     public Button Start_Button;
     private IEnumerator StartNewGame()
     {
@@ -31,10 +59,10 @@ public class MainMenu : MonoBehaviour
         {
             if (asyncLoad.progress >= 0.9f)
             {
-                // Ждём 3 секунды
+                // пїЅпїЅпїЅ 3 пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
                 yield return new WaitForSeconds(1);
 
-                // Переключаемся на загруженную сцену
+                // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
                 asyncLoad.allowSceneActivation = true;
             }
             yield return null;

@@ -3,6 +3,11 @@ using UnityEditor;
 using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.TestTools;
+using System;
+using UnityEngine.UI;
+using System.Collections;
+
 
 public class MainMenuTests
 {
