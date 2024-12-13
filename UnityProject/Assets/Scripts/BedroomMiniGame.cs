@@ -5,41 +5,33 @@ using System.Collections;
 
 public class BedroomMinigame : MonoBehaviour
 {
-    public Button locationButton;
-    public string LocationSceneName;
-    public GameObject CanvasUI;
+    public Button CloseButton;
+    public Sprite InventorySprite;
 
     // Start is called before the first frame update
     void Start()
-
     {
-        //CanvasUI.SetActive(false);
-        if (locationButton != null)
-        {
-            
-            locationButton.onClick.AddListener(OpenLocation);
-           // Debug.LogError("AddListener");
-        }
-        else
-        {
-            Debug.LogError("Button with name 'YourButtonName' not found!");
-        }
-
+        Camera mainCamera = Camera.main;
+        Inventory.Instance.GetComponent<Canvas>().worldCamera = mainCamera;
+        CloseButton.onClick.AddListener(CloseBedroomMiniGame);
+        Timer.Instance.OnMiniGameEnd += CloseBedroomMiniGame;
+    }  
+    private void CloseBedroomMiniGame()
+    {
+        Timer.Instance.ResetMiniGameTimer();
+        SceneManager.LoadScene("BedroomScene");
     }
-
-    // Update is called once per frame
-    void Update()
+    private void CheckWin() 
     {
-        
-    }
-    public void OpenLocation()
-    {
-        Debug.LogError("Button with name!");
+        GameObject itemObject = new GameObject("Report");
+        Item item = itemObject.AddComponent<Item>();
 
+        item.ItemId = 4;
+        item.Name = "Доклад";
+        item.InventorySprite = InventorySprite;
 
-        //  SoundManager.Instance.PlaySound(SoundManager.SoundClip.DoorCreak);
-        SceneManager.LoadScene(LocationSceneName);
-        //CanvasUI.SetActive(true);
-
+        // Добавление в инвентарь
+        Inventory.Instance.AddItem(item);
+        CloseBedroomMiniGame();
     }
 }

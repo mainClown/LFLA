@@ -17,7 +17,6 @@ public class TextBubble : MonoBehaviour
     public TextAsset textBText;
     public string[] dataLines;
     bool IsActive = true;
-    //Сори, Даша, если что-то поломал
     #region Singleton паттерн
     private void Awake()
     {
@@ -95,9 +94,11 @@ public class TextBubble : MonoBehaviour
             textB.SetActive(false);
         }
     }
-    void HideTextBubble()
+    void HideTextBubble() //Попробовать вызывать при запуске мини-игры, после завершения снова вызывать InvokeRepeating,
+                          //возможно из класса самой мини-игры через TextBubble.Instance
     {
-        textB.SetActive(false);
+        CancelInvoke("ShowTextBubble");// Как-то так
+        textB.SetActive(false); // должно быть
     }
 }
 

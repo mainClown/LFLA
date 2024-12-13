@@ -2,16 +2,17 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using System.Collections;
+using System.Runtime.CompilerServices;
 
 public class BathroomMinigame : MonoBehaviour
 {
     // Game Objects and Components
-    public Button locationButton;
-    public string LocationSceneName;
+    public Button CloseButton;
     public GameObject CanvasUI;
     public GameObject cursor;
     public GameObject line;
     public SpriteRenderer lineRenderer;
+    public Sprite InventorySprite;
 
     //Line
     private float lineLength;
@@ -38,21 +39,11 @@ public class BathroomMinigame : MonoBehaviour
     void Start()
 
     {
-        //CanvasUI.SetActive(false);
-        if (locationButton != null)
-        {
-
-            locationButton.onClick.AddListener(CloseBathroomMiniGame);
-           // Debug.LogError("AddListener");
-        }
-        else
-        {
-            Debug.LogError("Button locationButton not found!");
-        }
+        Camera mainCamera = Camera.main;
+        Inventory.Instance.GetComponent<Canvas>().worldCamera = mainCamera;
+        CloseButton.onClick.AddListener(CloseBathroomMiniGame);
+        Timer.Instance.OnMiniGameEnd += CloseBathroomMiniGame;
         lineLength = lineRenderer.bounds.size.x;
-       // Debug.LogError(greenSectorStart+"Start");
-        //Debug.LogError(greenSectorEnd + "End");
-
         //Initial Cursor Position
          cursorPosition = line.transform.position.x - lineLength / 2f;
         cursor.transform.position = new Vector3(cursorPosition, cursor.transform.position.y, cursor.transform.position.z);
@@ -72,7 +63,7 @@ public class BathroomMinigame : MonoBehaviour
 
     void MoveСursor()
     {
-if (movingRight)
+        if (movingRight)
         {
             cursorPosition += Speed * Time.deltaTime;
             if (cursorPosition >= line.transform.position.x + lineLength / 2f)
@@ -107,23 +98,28 @@ if (movingRight)
             CurrentHits--;
             //Debug.Log("Score: " + score + " (Red)");
         }
+        Debug.Log(CurrentHits);
     }
 
     void CheckWin()
     {
         if (CurrentHits >= hitsToWin)
         {
+            GameObject itemObject = new GameObject("BikeKeys");
+            Item item = itemObject.AddComponent<Item>();
+
+            item.ItemId = 16;
+            item.Name = "Ключи от велосипеда";
+            item.InventorySprite = InventorySprite;
+
+            // Добавление в инвентарь
+            Inventory.Instance.AddItem(item);
             CloseBathroomMiniGame();
         }
     }
     public void CloseBathroomMiniGame()
     {
-       // Debug.LogError("Button with name!");
-
-
-        //  SoundManager.Instance.PlaySound(SoundManager.SoundClip.DoorCreak);
-        SceneManager.LoadScene(LocationSceneName);
-        //CanvasUI.SetActive(true);
-
+        Timer.Instance.ResetMiniGameTimer();
+        SceneManager.LoadScene("BathroomScene");
     }
 }

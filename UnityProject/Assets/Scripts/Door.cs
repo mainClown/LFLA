@@ -31,7 +31,7 @@ public class Door : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
     }
     public bool CheckTransition()
     {
-        InventoryItems = Inventory.Instance.GetItemsID();
+        InventoryItems = Inventory.Instance.GetSelectedItemsID();
         return InventoryItems.Count >= NecessaryItems.Count && NecessaryItems.All(InventoryItems.Contains);
     }
     public void OnPointerEnter(PointerEventData eventData)

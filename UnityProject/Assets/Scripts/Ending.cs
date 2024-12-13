@@ -9,7 +9,7 @@ using UnityEngine.SceneManagement;
 
 public class Ending : MonoBehaviour
 {
-    public string EndingText;
+    private string EndingText;
     public string MainTextFile = "EndingTexts.csv";
     public string ItemsTextFile = "EndingTextsForItems.csv";
 

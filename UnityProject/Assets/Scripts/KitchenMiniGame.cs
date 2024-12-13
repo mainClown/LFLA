@@ -9,8 +9,8 @@ public class KitchenMiniGame : MonoBehaviour
     public GameObject plate;
     public Rigidbody2D rb_plate;
     public GameObject[] FallingItems; // Префабы продуктов !
-    public string LocationSceneName; //Переход в кухню
-    public Button locationButton;
+    public Button CloseButton;
+    public Sprite InventorySprite;
     // Plate Movement
     public float smoothSpeed = 50000f;
     public float maxX;
@@ -26,19 +26,12 @@ public class KitchenMiniGame : MonoBehaviour
     // Score Management
     private int CurrentItems = 0;
     int ItemsToWin = 15;
-    
-    public GameObject CanvasUI;
     void Start()
     {
-        CanvasUI.SetActive(false);
-        if (locationButton != null)
-        {
-            locationButton.onClick.AddListener(CloseKitchenMiniGame);
-        }
-        else
-        {
-            Debug.LogError("Button with name 'YourButtonName' not found!");
-        }
+        Camera mainCamera = Camera.main;
+        Inventory.Instance.GetComponent<Canvas>().worldCamera = mainCamera;
+        CloseButton.onClick.AddListener(CloseKitchenMiniGame);
+        Timer.Instance.OnMiniGameEnd += CloseKitchenMiniGame;
 
         plate = GameObject.Find("Plate");
         if (plate == null)
@@ -60,12 +53,6 @@ public class KitchenMiniGame : MonoBehaviour
         else
         {
             Debug.LogError("Plate GameObject does not have a BoxCollider2D!");
-            return;
-        }
-        Camera mainCamera = Camera.main;
-        if (mainCamera == null)
-        {
-            Debug.LogError("Main camera not found!");
             return;
         }
 
@@ -106,9 +93,6 @@ public class KitchenMiniGame : MonoBehaviour
             yield return null; // Убедитесь, что корутина не блокирует Update()
         }
     }
-
-
-
 
     void SpawnItem()
     {
@@ -157,16 +141,22 @@ public class KitchenMiniGame : MonoBehaviour
     {
         if (CurrentItems >= ItemsToWin)
         {
+            GameObject itemObject = new GameObject("Breakfast");
+            Item item = itemObject.AddComponent<Item>();
+
+            item.ItemId = 23;
+            item.Name = "Завтрак";
+            item.InventorySprite = InventorySprite;
+
+            // Добавление в инвентарь
+            Inventory.Instance.AddItem(item);
             CloseKitchenMiniGame();
         }
     }
     public void CloseKitchenMiniGame()
     {
-
-        //  SoundManager.Instance.PlaySound(SoundManager.SoundClip.DoorCreak);
-        SceneManager.LoadScene(LocationSceneName);
-        CanvasUI.SetActive(true);
-
+        Timer.Instance.ResetMiniGameTimer();
+        SceneManager.LoadScene("KitchenScene");
     }
 }
 

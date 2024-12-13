@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
-// using TMPro.Examples;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -11,13 +10,14 @@ using UnityEngine.UIElements;
 
 public class NewDoor : MonoBehaviour
 {
-    public GameObject ItemsContainerObject; // ������ ����������� ���� ��������� �������, ������� �����.
+    public GameObject ItemsContainerObject;
     private static List<int> InventoryItems;
-    private Transform[] ItemsList; // ������ ���� ��������� � ItemsContainerObject
-    public static GameObject NameDisplay { get; private set; } // ������ �� UI ����� ��� ����������� �����
+    private static List<int> UsedItems;
+    private Transform[] ItemsList;
+    public static GameObject NameDisplay { get; private set; }
     private static GameObject DisplayText;
     private static GameObject DisplayBackground;
-    #region Singleton �������
+    #region Singleton
     private void Awake()
     {
         GameObject UICanvas = GameObject.Find("UICanvas");
@@ -38,22 +38,21 @@ public class NewDoor : MonoBehaviour
         Inventory.Instance.GetComponent<Canvas>().worldCamera = mainCamera;
         if (ItemsContainerObject != null)
         {
-            InventoryItems = Inventory.Instance.GetItemsID(); // �������� ID ��������� �� ���������
+            InventoryItems = Inventory.Instance.GetSelectedItemsID();
+            UsedItems = Inventory.Instance.GetUsedItemsID();
             ItemsList = ItemsContainerObject.GetComponentsInChildren<Transform>();
             foreach (Transform childObject in ItemsList)
             {
                 Item item = childObject.GetComponent<Item>();
                 if (item != null)
                 {
-                    foreach (int itemId in InventoryItems)
+                    if (item.sceneToLoad != "")
                     {
-                        if (item.ItemId == itemId) //���� ������� � ������� ���� � ���������, �� ����������
-                        {
-                            item.gameObject.SetActive(false);
-                        }
-                        else // ����� ����������� � ItemsToShow 
-                        {
-                        }
+                        item.gameObject.SetActive(!UsedItems.Contains(item.ItemId));
+                    }
+                    else 
+                    {
+                        item.gameObject.SetActive(!InventoryItems.Contains(item.ItemId));
                     }
                 }
             }
@@ -74,26 +73,21 @@ public class NewDoor : MonoBehaviour
     }
     private static void UpdateDisplaySize()
     {
-        // ��������� ������ ���� � ������������ � �������� ������
         RectTransform textRectTransform = DisplayText.GetComponent<RectTransform>();
         RectTransform BGRectTransform = DisplayBackground.GetComponent<RectTransform>();
         Vector2 textSize = new Vector2(textRectTransform.rect.width, textRectTransform.rect.height);
 
-        // ��������� ������� ��������
         float padding = 10f;
         BGRectTransform.sizeDelta = new Vector2(textSize.x + padding, textSize.y + padding);
     }
     private Vector2 GetRectTransformScreenSize(RectTransform rect)
     {
-        // ������ ��� ��������� ����� RectTransform
         Vector3[] worldCorners = new Vector3[4];
         rect.GetWorldCorners(worldCorners);
 
-        // �������������� ����� � �������� ����������
         Vector2 bottomLeft = Camera.main.WorldToScreenPoint(worldCorners[0]);
         Vector2 topRight = Camera.main.WorldToScreenPoint(worldCorners[2]);
 
-        // ���������� ������ � ������
         float width = topRight.x - bottomLeft.x;
         float height = topRight.y - bottomLeft.y;
 
@@ -101,42 +95,36 @@ public class NewDoor : MonoBehaviour
     }
     void Update()
     {
-        // �������� ������� ���� �� ������
+
         Vector3 mousePosition = Input.mousePosition;
         RectTransform textRectTransform = DisplayText.GetComponent<RectTransform>();
         
-        // ���������� ������ � ������ ������
         float screenWidth = Screen.width;
         float screenHeight = Screen.height;
 
-        // ���������, ��������� ������ ������ � ����� ������
         Vector2 TextScreenSize = GetRectTransformScreenSize(textRectTransform);
         float textWidth = TextScreenSize.x;
         float textHeight = TextScreenSize.y;
-        // ���� ������ ������ � ������� ����, ��������� ��������� ����� �� �������
+
         if (mousePosition.x + textWidth / 2 > screenWidth / 2)
         {
             mousePosition.x -= textWidth / 2;
         }
-        // ���� ������ ������ � ������ ����, ��������� ��������� ������ �� �������
         else
         {
             mousePosition.x += textWidth / 2;
         }
 
-        // ���� ������ ������ � �������� ����, ��������� ��������� ���� �������
         if (mousePosition.y + textHeight / 2 > screenHeight / 2)
         {
             mousePosition.y -= textHeight;
         }
-        // ���� ������ ������ � ������� ����, ��������� ��������� ���� �������
         else
         {
             mousePosition.y += textHeight;
         }
         mousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
         mousePosition.z = 0;
-        // ���������� ������ � ������� ����
         NameDisplay.transform.position = mousePosition;
         UpdateDisplaySize();
     }

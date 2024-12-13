@@ -12,12 +12,14 @@ public class Timer : MonoBehaviour
     public static Timer Instance { get; private set; }
     public GameObject TimerText;
 
-    private static int MiniGameTimer;
+    private int MiniGameTimer;
     private static int LocationTimer;
     private static bool IsMiniGamePlaying;
     private static bool IsPaused;
+    private static bool EasyMode;
+    public event Action OnMiniGameEnd;
     
-    #region Singleton �������
+    #region Singleton паттерн
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -27,7 +29,7 @@ public class Timer : MonoBehaviour
         else
         {
             Instance = this;
-            bool EasyMode = Convert.ToBoolean(PlayerPrefs.GetInt("EasyMode", 1));
+            EasyMode = Convert.ToBoolean(PlayerPrefs.GetInt("EasyMode", 1));
             LocationTimer = EasyMode ? 120 : 60;
             IsPaused = false;
             IsMiniGamePlaying = false;
@@ -41,15 +43,23 @@ public class Timer : MonoBehaviour
         {
             while (IsPaused)
             {
-                yield return null; // ���� �� ���������� �����
+                yield return null;
             }
-            if (IsMiniGamePlaying) //�������� ����-���� - �������� ������ ����-����
+            if (IsMiniGamePlaying)
             {
-                UpdateVisuals(MiniGameTimer);
-                yield return new WaitForSeconds(1);
-                MiniGameTimer--;
+                while (MiniGameTimer >= 0)
+                {
+                    while (IsPaused)
+                    {
+                        yield return null;
+                    }
+                    UpdateVisuals(MiniGameTimer);
+                    yield return new WaitForSeconds(1);
+                    MiniGameTimer--;
+                }
+                OnMiniGameEnd?.Invoke();
             }
-            else // ����� �������� ������ �������
+            else
             {
                 UpdateVisuals(LocationTimer);
                 yield return new WaitForSeconds(1);
@@ -68,6 +78,7 @@ public class Timer : MonoBehaviour
     {
         if (TimerType >= 10)
         {
+            TimerText.GetComponent<TextMeshProUGUI>().color = Color.black;
             string formattedTime = string.Format("{0:D2}:{1:D2}", TimerType/60, TimerType%60);
             TimerText.GetComponent<TextMeshProUGUI>().text = formattedTime;
         }
@@ -83,5 +94,15 @@ public class Timer : MonoBehaviour
         //    Destroy(GameObject.Find("UICanvas"));
         //    SceneManager.LoadScene("EndingScene");
         //}
+    }
+    public void SetMiniGameTimer(int MiniGameTimeSeconds) 
+    {
+        MiniGameTimer = MiniGameTimeSeconds /( EasyMode ? 1 : 2); 
+        IsMiniGamePlaying = true;
+    }
+    public void ResetMiniGameTimer()
+    {
+        MiniGameTimer = 0;
+        IsMiniGamePlaying = false;
     }
 }

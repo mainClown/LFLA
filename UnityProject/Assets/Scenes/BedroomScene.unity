@@ -212,6 +212,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: "\u041E\u0434\u0435\u0436\u0434\u0430"
   ItemId: 2
+  sceneToLoad: 
+  MiniGameTimeSeconds: 0
   InventorySprite: {fileID: 21300000, guid: 172aa4fdac5787c40b6faf16d7c54828, type: 3}
   HighlightSprite: {fileID: 21300000, guid: d08db4fb66efcba4995018ad4d435740, type: 3}
   NoHighlightSprite: {fileID: 21300000, guid: 5ca2784a789793040b88fd87a37b8965, type: 3}
@@ -343,6 +345,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: "\u0422\u0435\u043B\u0435\u0444\u043E\u043D"
   ItemId: 1
+  sceneToLoad: 
+  MiniGameTimeSeconds: 0
   InventorySprite: {fileID: 21300000, guid: 052c2fdb665f1aa4d997455331f1e6a1, type: 3}
   HighlightSprite: {fileID: 21300000, guid: 613a50d7ef13f9541b599fed2b6e9943, type: 3}
   NoHighlightSprite: {fileID: 21300000, guid: a59ded3f8c812e64585e0afc7743ba29, type: 3}
@@ -462,9 +466,7 @@ GameObject:
   - component: {fileID: 341656614}
   - component: {fileID: 341656617}
   - component: {fileID: 341656616}
-  - component: {fileID: 341656619}
   - component: {fileID: 341656618}
-  - component: {fileID: 341656620}
   m_Layer: 0
   m_Name: report
   m_TagString: Untagged
@@ -543,68 +545,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: "\u0414\u043E\u043A\u043B\u0430\u0434"
   ItemId: 4
+  sceneToLoad: BedroomMiniGameScene
+  MiniGameTimeSeconds: 40
   InventorySprite: {fileID: 21300000, guid: 3c0d6c33515b83a4d80cfe066cb934d6, type: 3}
   HighlightSprite: {fileID: 21300000, guid: 726a05d815ff2814a968f0d09251d25d, type: 3}
   NoHighlightSprite: {fileID: 21300000, guid: be9e4a2d6cd9aa141b38ac02adc0fc7d, type: 3}
---- !u!114 &341656619
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 341656613}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 85358724f24f49d48bf41aee55863c67, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sceneToLoad: BedroomMiniGameScene
-  CanvasUI: {fileID: 0}
---- !u!61 &341656620
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 341656613}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -804,6 +749,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: "\u041A\u043E\u043D\u0441\u043F\u0435\u043A\u0442"
   ItemId: 3
+  sceneToLoad: 
+  MiniGameTimeSeconds: 0
   InventorySprite: {fileID: 21300000, guid: 41bea6b5bef465e4c80ec254f4d6cd43, type: 3}
   HighlightSprite: {fileID: 21300000, guid: cfcf189e2e4ce014dbe9aaea3c211efe, type: 3}
   NoHighlightSprite: {fileID: 21300000, guid: f03e144be7c66db478ea826c74cd07e6, type: 3}
@@ -816,7 +763,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 578153403}
-  - component: {fileID: 578153404}
   - component: {fileID: 578153405}
   m_Layer: 0
   m_Name: Items
@@ -852,102 +798,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!82 &578153404
-AudioSource:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 578153402}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
-  m_Volume: 1
-  m_Pitch: 1
-  Loop: 0
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
 --- !u!114 &578153405
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1051,6 +901,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: "\u041F\u0435\u043D\u0430\u043B"
   ItemId: 7
+  sceneToLoad: 
+  MiniGameTimeSeconds: 0
   InventorySprite: {fileID: 21300000, guid: 1a58f5c0f2cb31d4d86f8cd64675378f, type: 3}
   HighlightSprite: {fileID: 21300000, guid: f2b7bce8a9871a14399e3c77b3d31575, type: 3}
   NoHighlightSprite: {fileID: 21300000, guid: 20d1471046c4a8c47a5a6797ccd4d3c3, type: 3}
@@ -1246,6 +1098,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: USB
   ItemId: 5
+  sceneToLoad: 
+  MiniGameTimeSeconds: 0
   InventorySprite: {fileID: 21300000, guid: 3033cdd9672cdda419f779e4f7148781, type: 3}
   HighlightSprite: {fileID: 21300000, guid: 2f160a1656c83bf4ebd28fde26886960, type: 3}
   NoHighlightSprite: {fileID: 21300000, guid: def1bfaa616786b4b84968c5fdb46a91, type: 3}
@@ -1380,7 +1234,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6419761cc752b14daab90a63d7f2eab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EndingText: 
   MainTextFile: EndingTexts.csv
   ItemsTextFile: EndingTextsForItems.csv
 --- !u!4 &1816873678
@@ -1582,6 +1435,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: "\u041F\u0430\u0432\u0435\u0440\u0431\u0430\u043D\u043A"
   ItemId: 6
+  sceneToLoad: 
+  MiniGameTimeSeconds: 0
   InventorySprite: {fileID: 21300000, guid: 2c20e515088d31640858ae4cb893a234, type: 3}
   HighlightSprite: {fileID: 21300000, guid: 317e09f51804fcf4598f22ec93d93de6, type: 3}
   NoHighlightSprite: {fileID: 21300000, guid: 9c46bd7fc704b804daf27212951e2a52, type: 3}

@@ -9,19 +9,16 @@ using System.Linq;
 public class HallMiniGame : MonoBehaviour
 {
     // Game Objects and Components
-    public Button locationButton;
-    public string LocationSceneName;
-    public GameObject CanvasUI;
+    public Button CloseButton;
     public TMP_Text equationText;
     public TMP_Text answerText;
     public Button[] numberButtons;
     public Button enterButton;
-
+    public Sprite InventorySprite;
 
     //Problems
     private string СurrentProblem;
     private string currentAnswer = "";
-    int СurrentProblemIndex; // Not Used
 
     // Score Management
     int CorrectAnswersToWin = 5;
@@ -45,18 +42,10 @@ public class HallMiniGame : MonoBehaviour
     void Start()
 
     {
-        //CanvasUI.SetActive(false);
-        if (locationButton != null)
-        {
-
-            locationButton.onClick.AddListener(CloseHallMiniGame);
-            //Debug.LogError("AddListener");
-        }
-        else
-        {
-            Debug.LogError("Button with name  not found!");
-        }
-        
+        Camera mainCamera = Camera.main;
+        Inventory.Instance.GetComponent<Canvas>().worldCamera = mainCamera;
+        CloseButton.onClick.AddListener(CloseHallMiniGame);
+        Timer.Instance.OnMiniGameEnd += CloseHallMiniGame;
 
         foreach (Button button in numberButtons)
         {
@@ -81,20 +70,10 @@ public class HallMiniGame : MonoBehaviour
         currentAnswer = "";
         answerText.text = currentAnswer;
     }
-
-    void Update()
-    {
-
-    }
     public void CloseHallMiniGame()
     {
-       // Debug.LogError("Button with name!");
-
-
-        //  SoundManager.Instance.PlaySound(SoundManager.SoundClip.DoorCreak);
-        SceneManager.LoadScene(LocationSceneName);
-        //CanvasUI.SetActive(true);
-
+        Timer.Instance.ResetMiniGameTimer();
+        SceneManager.LoadScene("HallScene");
     }
     void AddDigit(int digit)
     {
@@ -135,9 +114,18 @@ public class HallMiniGame : MonoBehaviour
     {
         if (CorrectAnswers >= CorrectAnswersToWin)
         {
-            
+            GameObject itemObject = new GameObject("Calculator");
+            Item item = itemObject.AddComponent<Item>();
+
+            item.ItemId = 11;
+            item.Name = "Калькулятор";
+            item.InventorySprite = InventorySprite;
+
+            // Добавление в инвентарь
+            Inventory.Instance.AddItem(item);
             CloseHallMiniGame();
         }
        
     }
+
 }

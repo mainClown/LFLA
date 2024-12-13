@@ -10,6 +10,7 @@ using UnityEngine.UI;
 public class Inventory : MonoBehaviour
 {
     public static List<Item> SelectedItems { get; private set; }
+    public static List<Item> UsedItems { get; private set; }
     public static Inventory Instance { get; private set; }
 
     private Transform[] InventoryUIList;
@@ -32,6 +33,7 @@ public class Inventory : MonoBehaviour
         {
             Instance = this;
             SelectedItems = new List<Item>();
+            UsedItems = new List<Item>();
             ItemCount = 0;
             DontDestroyOnLoad(target: this);
         }
@@ -43,6 +45,10 @@ public class Inventory : MonoBehaviour
 
         UpdateVisual(ItemObject);
         //TextBubble.Instance.DeleteItemToShow(ItemObject.ItemID);
+    }
+    public void UseItem(Item ItemObject)
+    {
+        UsedItems.Add(ItemObject);
     }
     public void ShowInventory()
     {
@@ -74,10 +80,20 @@ public class Inventory : MonoBehaviour
             }
         }
     }
-    public List<int> GetItemsID() // Получаем ID предметов из инвентаря
+    public List<int> GetSelectedItemsID() // Получаем ID предметов из списка
     {
         List<int> ItemsID = new List<int>();
         foreach (var item in SelectedItems) 
+        {
+            ItemsID.Add(item.ItemId);
+        }
+        return ItemsID;
+    }
+    //какой позоррррр, не смотрите, мне стыдно за копипаст\/\/\/
+    public List<int> GetUsedItemsID() // Получаем ID предметов из списка
+    {
+        List<int> ItemsID = new List<int>();
+        foreach (var item in UsedItems)
         {
             ItemsID.Add(item.ItemId);
         }
