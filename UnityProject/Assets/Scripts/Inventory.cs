@@ -21,7 +21,7 @@ public class Inventory : MonoBehaviour
 
     private int ItemCount;
 
-    #region Singleton паттерн
+    #region Singleton пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -80,7 +80,7 @@ public class Inventory : MonoBehaviour
             }
         }
     }
-    public List<int> GetSelectedItemsID() // Получаем ID предметов из списка
+    public List<int> GetSelectedItemsID() // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ ID пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
     {
         List<int> ItemsID = new List<int>();
         foreach (var item in SelectedItems) 
@@ -89,8 +89,8 @@ public class Inventory : MonoBehaviour
         }
         return ItemsID;
     }
-    //какой позоррррр, не смотрите, мне стыдно за копипаст\/\/\/
-    public List<int> GetUsedItemsID() // Получаем ID предметов из списка
+    //пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ\/\/\/
+    public List<int> GetUsedItemsID() // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ ID пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
     {
         List<int> ItemsID = new List<int>();
         foreach (var item in UsedItems)
@@ -99,4 +99,10 @@ public class Inventory : MonoBehaviour
         }
         return ItemsID;
     }
+    // Р’СЂРµРјРµРЅРЅРѕ РґР»СЏ С‚РµСЃС‚РѕРІ
+    public void SetInstanceForTests()
+    {
+        Instance = this;
+    }
+
 }

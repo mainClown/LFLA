@@ -1,64 +1,74 @@
 using NUnit.Framework;
 using UnityEngine;
-using UnityEngine.UI;
+using System.Collections.Generic;
 using TMPro;
-using static UnityEditor.Progress;
 
-public class InventoryIntegrationTest
+[TestFixture]
+public class InventoryTests
 {
-    [Test]
-    public void TestAddItemToInventory()
+    private GameObject inventoryObject;
+    private Inventory inventory;
+
+    [SetUp]
+    public void Setup()
     {
-        // Arrange
-        // ������� �������� ������
-        Item item1 = new GameObject().AddComponent<Item>();
-        item1.Name = "Clothes";
-        item1.ItemId = 1;
-        item1.InventorySprite = Sprite.Create(new Texture2D(1, 1), new Rect(0, 0, 1, 1), Vector2.zero);
-        item1.HighlightSprite = Sprite.Create(new Texture2D(1, 1), new Rect(0, 0, 1, 1), Vector2.zero);
-        item1.NoHighlightSprite = Sprite.Create(new Texture2D(1, 1), new Rect(0, 0, 1, 1), Vector2.zero);
+        // Создаем объект инвентаря
+        inventoryObject = new GameObject("Inventory");
+        inventory = inventoryObject.AddComponent<Inventory>();
 
-        Item item2 = new GameObject().AddComponent<Item>();
-        item2.Name = "Phone";
-        item2.ItemId = 2;
-        item2.InventorySprite = Sprite.Create(new Texture2D(1, 1), new Rect(0, 0, 1, 1), Vector2.zero);
-        item2.HighlightSprite = Sprite.Create(new Texture2D(1, 1), new Rect(0, 0, 1, 1), Vector2.zero);
-        item2.NoHighlightSprite = Sprite.Create(new Texture2D(1, 1), new Rect(0, 0, 1, 1), Vector2.zero);
+        // Устанавливаем синглтон вручную для тестов
+        inventory.SetInstanceForTests();  // Временная замена синглтона
 
-        Item item3 = new GameObject().AddComponent<Item>();
-        item3.Name = "usb";
-        item3.ItemId = 3;
-        item3.InventorySprite = Sprite.Create(new Texture2D(1, 1), new Rect(0, 0, 1, 1), Vector2.zero);
-        item3.HighlightSprite = Sprite.Create(new Texture2D(1, 1), new Rect(0, 0, 1, 1), Vector2.zero);
-        item3.NoHighlightSprite = Sprite.Create(new Texture2D(1, 1), new Rect(0, 0, 1, 1), Vector2.zero);
+        // Создаем временные заглушки для UI объектов, которые могут быть null
+        inventory.InventoryUI = new GameObject("InventoryUI");
+        inventory.CellContainerObject = new GameObject("CellContainerObject");
 
-        Inventory inventory = new GameObject().AddComponent<Inventory>();
-        inventory.InventoryUI = new GameObject();
-        inventory.CellContainerObject = new GameObject();
-        inventory.CanvasUI = new GameObject();
-        inventory.ItemCounter = new GameObject();
-
-        // ��������� ����������, ����������� ��� ������ Inventory
-        inventory.InventoryUI.AddComponent<Image>();
-        inventory.CellContainerObject.AddComponent<Image>();
+        // Создаем объект ItemCounter и добавляем к нему компонент TextMeshProUGUI
+        inventory.ItemCounter = new GameObject("ItemCounter");
         inventory.ItemCounter.AddComponent<TextMeshProUGUI>();
 
-        // ��������� �������� ������ � CellContainerObject
-        GameObject cellObject = new GameObject("Cell");
-        cellObject.transform.SetParent(inventory.CellContainerObject.transform);
-        cellObject.AddComponent<Image>();
+        // Заглушка для CanvasUI
+        inventory.CanvasUI = new GameObject("CanvasUI");
 
-        // Act
-        // ��������� �������� � ���������
-        inventory.AddItem(item1);
-        inventory.AddItem(item2);
-        inventory.AddItem(item3);
+        // Убедимся, что список SelectedItems пустой перед каждым тестом
+        Inventory.SelectedItems.Clear();
+    }
 
-        // Assert
-        // ���������, ��� �������� ��������� � ���������
-        Assert.AreEqual(3, Inventory.SelectedItems.Count);
-        Assert.IsTrue(Inventory.SelectedItems.Contains(item1));
-        Assert.IsTrue(Inventory.SelectedItems.Contains(item2));
-        Assert.IsTrue(Inventory.SelectedItems.Contains(item3));
+    [Test]
+    public void AddItem_AddsItemToInventory()
+    {
+        // Подготовка тестовых данных
+        var item1 = new GameObject("Clothes").AddComponent<Item>();
+        item1.Name = "Clothes";
+        item1.ItemId = 1;
+        
+        var item2 = new GameObject("Phone").AddComponent<Item>();
+        item2.Name = "Phone";
+        item2.ItemId = 2;
+
+        var item3 = new GameObject("usb").AddComponent<Item>();
+        item3.Name = "usb";
+        item3.ItemId = 3;
+
+        // Имитируем добавление предметов в инвентарь
+        Inventory.Instance.AddItem(item1);
+        Inventory.Instance.AddItem(item2);
+
+        // Проверяем, что предметы добавлены в список
+        Assert.AreEqual(Inventory.SelectedItems.Count, 2);
+
+        // Добавляем новый предмет
+        Inventory.Instance.AddItem(item3);
+
+        // Проверяем, что предмет добавился в инвентарь
+        Assert.AreEqual(Inventory.SelectedItems.Count, 3);
+        Assert.AreEqual(Inventory.SelectedItems[2], item3);
+    }
+
+    [TearDown]
+    public void TearDown()
+    {
+        // Очищаем ресурсы после теста
+        Object.DestroyImmediate(inventoryObject);
     }
 }
