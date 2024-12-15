@@ -797,6 +797,7 @@ MonoBehaviour:
   cursor: {fileID: 215454055}
   line: {fileID: 942043392}
   lineRenderer: {fileID: 942043393}
+  InventorySprite: {fileID: 21300000, guid: ae9af9ca44cefe64cbd87b626549b70a, type: 3}
   Speed: 50
 --- !u!1 &1912204431
 GameObject:

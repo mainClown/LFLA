@@ -46,7 +46,7 @@ public class HallMiniGame : MonoBehaviour
         Inventory.Instance.GetComponent<Canvas>().worldCamera = mainCamera;
         CloseButton.onClick.AddListener(CloseHallMiniGame);
         Timer.Instance.OnMiniGameEnd += CloseHallMiniGame;
-
+        TextBubble.Instance.HideTextBubble();
         foreach (Button button in numberButtons)
         {
             int number = int.Parse(button.name); 
@@ -73,6 +73,7 @@ public class HallMiniGame : MonoBehaviour
     public void CloseHallMiniGame()
     {
         Timer.Instance.ResetMiniGameTimer();
+        TextBubble.Instance.StartAgain();
         SceneManager.LoadScene("HallScene");
     }
     void AddDigit(int digit)

@@ -43,6 +43,7 @@ public class BathroomMinigame : MonoBehaviour
         Inventory.Instance.GetComponent<Canvas>().worldCamera = mainCamera;
         CloseButton.onClick.AddListener(CloseBathroomMiniGame);
         Timer.Instance.OnMiniGameEnd += CloseBathroomMiniGame;
+        TextBubble.Instance.HideTextBubble();
         lineLength = lineRenderer.bounds.size.x;
         //Initial Cursor Position
          cursorPosition = line.transform.position.x - lineLength / 2f;
@@ -120,6 +121,7 @@ public class BathroomMinigame : MonoBehaviour
     public void CloseBathroomMiniGame()
     {
         Timer.Instance.ResetMiniGameTimer();
+        TextBubble.Instance.StartAgain();
         SceneManager.LoadScene("BathroomScene");
     }
 }

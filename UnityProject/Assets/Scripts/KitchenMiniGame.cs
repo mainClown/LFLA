@@ -25,14 +25,14 @@ public class KitchenMiniGame : MonoBehaviour
 
     // Score Management
     private int CurrentItems = 0;
-    int ItemsToWin = 15;
+    int ItemsToWin = 5;
     void Start()
     {
         Camera mainCamera = Camera.main;
         Inventory.Instance.GetComponent<Canvas>().worldCamera = mainCamera;
         CloseButton.onClick.AddListener(CloseKitchenMiniGame);
         Timer.Instance.OnMiniGameEnd += CloseKitchenMiniGame;
-
+        TextBubble.Instance.HideTextBubble();
         plate = GameObject.Find("Plate");
         if (plate == null)
         {
@@ -156,6 +156,7 @@ public class KitchenMiniGame : MonoBehaviour
     public void CloseKitchenMiniGame()
     {
         Timer.Instance.ResetMiniGameTimer();
+        TextBubble.Instance.StartAgain();
         SceneManager.LoadScene("KitchenScene");
     }
 }

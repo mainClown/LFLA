@@ -94,11 +94,16 @@ public class TextBubble : MonoBehaviour
             textB.SetActive(false);
         }
     }
-    void HideTextBubble() //Попробовать вызывать при запуске мини-игры, после завершения снова вызывать InvokeRepeating,
+    public void HideTextBubble() //Попробовать вызывать при запуске мини-игры, после завершения снова вызывать InvokeRepeating,
                           //возможно из класса самой мини-игры через TextBubble.Instance
     {
         CancelInvoke("ShowTextBubble");// Как-то так
         textB.SetActive(false); // должно быть
+    }
+
+    public void StartAgain()
+    {
+        InvokeRepeating("ShowTextBubble", 0, 5.0f);
     }
 }
 
