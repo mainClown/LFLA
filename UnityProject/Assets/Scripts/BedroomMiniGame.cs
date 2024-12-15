@@ -71,7 +71,7 @@ public class BedroomMinigame : MonoBehaviour
     }
     IEnumerator HideObject()
     {
-        yield return new WaitForSeconds(3.0f);
+        yield return new WaitForSeconds(15.0f);
         textOrig.SetActive(false);
         textNew.SetActive(true);
     }
