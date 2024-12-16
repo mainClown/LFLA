@@ -11,8 +11,8 @@ using System;
 public class Ending : MonoBehaviour
 {
     private string EndingText;
-    public string MainTextFile = "EndingTexts.csv";
-    public string ItemsTextFile = "EndingTextsForItems.csv";
+    public string MainTextFile1 = "EndingTexts";
+    public string ItemsTextFile1 = "EndingTextsForItems";
 
     private TMP_Text TextField;
     private Dictionary<string, string> mainTextDictionary = new Dictionary<string, string>();
@@ -62,92 +62,93 @@ public class Ending : MonoBehaviour
             ShowEnding();
         }
     }
-    //private void LoadMainTextFile()
-    //{
-    //    TextAsset mainTextAsset = Resources.Load<TextAsset>("CSVFiles/" + MainTextFile1);
-
-    //    if (mainTextAsset != null)
-    //    {
-    //        string[] lines = mainTextAsset.text.Split(new[] { '\n' });
-
-    //        foreach (string line in lines)
-    //        {
-    //            string[] columns = line.Split(';');
-
-    //            if (columns.Length >= 2)
-    //            {
-    //                mainTextDictionary[columns[0]] = columns[1];
-    //            }
-    //        }
-    //    }
-    //    else
-    //    {
-    //        Debug.LogError("Main text file not found in Resources.");
-    //    }
-    //}
-
-    //private void LoadItemsTextFile()
-    //{
-    //    TextAsset itemsTextAsset = Resources.Load<TextAsset>("CSVFiles/" + ItemsTextFile1);
-
-    //    if (itemsTextAsset != null)
-    //    {
-    //        string[] lines = itemsTextAsset.text.Split(new[] { '\n' });
-    //        for (int i = 1; i < lines.Length; i++)
-    //        {
-    //            string[] columns = lines[i].Split(';');
-
-    //            if (columns.Length >= 3)
-    //            {
-    //                string item = columns[0];
-    //                string taken = columns[1];
-    //                string notTaken = columns[2];
-
-    //                itemsDictionary[item] = new ItemText(taken, notTaken);
-    //            }
-    //        }
-
-    //    }
-    //    else
-    //        {
-    //        Debug.LogError("Items text file not found in Resources.");
-    //    }
-    //}
     private void LoadMainTextFile()
     {
-        string filePath = Path.Combine(Application.dataPath, "_Assets", MainTextFile);
-        string[] lines = File.ReadAllLines(filePath);
+        TextAsset mainTextAsset = Resources.Load<TextAsset>("CSVFiles/" + MainTextFile1);
 
-        foreach (string line in lines)
+        if (mainTextAsset != null)
         {
-            string[] columns = line.Split(';');
+            string[] lines = mainTextAsset.text.Split(new[] { "\r\n", "\r", "\n" }, StringSplitOptions.None);
 
-            if (columns.Length >= 2)
+            foreach (string line in lines)
             {
-                mainTextDictionary[columns[0]] = columns[1];
+                string[] columns = line.Split(';');
+
+                if (columns.Length >= 2)
+                {
+                    mainTextDictionary[columns[0]] = columns[1];
+                }
             }
+        }
+        else
+        {
+            Debug.LogError("Main text file not found in Resources.");
         }
     }
 
     private void LoadItemsTextFile()
     {
-        string filePath = Path.Combine(Application.dataPath, "_Assets", ItemsTextFile);
-        string[] lines = File.ReadAllLines(filePath);
+        TextAsset itemsTextAsset = Resources.Load<TextAsset>("CSVFiles/" + ItemsTextFile1);
 
-        for (int i = 1; i < lines.Length; i++)
+        if (itemsTextAsset != null)
         {
-            string[] columns = lines[i].Split(';');
+            string[] lines = itemsTextAsset.text.Split(new[] { "\r\n", "\r", "\n" }, StringSplitOptions.None);
 
-            if (columns.Length >= 3)
+            for (int i = 1; i < lines.Length; i++)
             {
-                string item = columns[0];
-                string taken = columns[1];
-                string notTaken = columns[2];
+                string[] columns = lines[i].Split(';');
 
-                itemsDictionary[item] = new ItemText(taken, notTaken);
+                if (columns.Length >= 3)
+                {
+                    string item = columns[0];
+                    string taken = columns[1];
+                    string notTaken = columns[2];
+
+                    itemsDictionary[item] = new ItemText(taken, notTaken);
+                }
             }
+
+        }
+        else
+        {
+            Debug.LogError("Items text file not found in Resources.");
         }
     }
+    //private void LoadMainTextFile()
+    //{
+    //    string filePath = Path.Combine(Application.dataPath, "_Assets", MainTextFile);
+    //    string[] lines = File.ReadAllLines(filePath);
+
+    //    foreach (string line in lines)
+    //    {
+    //        string[] columns = line.Split(';');
+
+    //        if (columns.Length >= 2)
+    //        {
+    //            mainTextDictionary[columns[0]] = columns[1];
+    //        }
+    //    }
+    //}
+
+    //private void LoadItemsTextFile()
+    //{
+    //    string filePath = Path.Combine(Application.dataPath, "_Assets", ItemsTextFile);
+    //    string[] lines = File.ReadAllLines(filePath);
+
+    //    for (int i = 1; i < lines.Length; i++)
+    //    {
+    //        string[] columns = lines[i].Split(';');
+
+    //        if (columns.Length >= 3)
+    //        {
+    //            string item = columns[0];
+    //            string taken = columns[1];
+    //            string notTaken = columns[2];
+
+    //            itemsDictionary[item] = new ItemText(taken, notTaken);
+    //        }
+    //    }
+    //}
     private void ShowEnding() // Получается ShowEnding у нас стал приватным, я хз как всё вместе сделать - и назначение переменной и вызов метода,
                               // потому что надо ещё обрабатывать то, в какую сцену мы попали событием OnSceneLoaded
     {
