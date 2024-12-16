@@ -393,7 +393,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 8ddfb54ed2e3f66439e5c83a0a437756, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.2
+  m_Volume: 0.05
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -643,7 +643,7 @@ MonoBehaviour:
   Name: "\u0414\u043E\u043A\u043B\u0430\u0434"
   ItemId: 4
   sceneToLoad: BedroomMiniGameScene
-  MiniGameTimeSeconds: 40
+  MiniGameTimeSeconds: 55
   InventorySprite: {fileID: 21300000, guid: 3c0d6c33515b83a4d80cfe066cb934d6, type: 3}
   HighlightSprite: {fileID: 21300000, guid: 726a05d815ff2814a968f0d09251d25d, type: 3}
   NoHighlightSprite: {fileID: 21300000, guid: be9e4a2d6cd9aa141b38ac02adc0fc7d, type: 3}

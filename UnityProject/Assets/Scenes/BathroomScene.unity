@@ -315,7 +315,7 @@ MonoBehaviour:
   Name: "\u0420\u0430\u043A\u043E\u0432\u0438\u043D\u0430"
   ItemId: 16
   sceneToLoad: BathroomMiniGameScene
-  MiniGameTimeSeconds: 40
+  MiniGameTimeSeconds: 30
   InventorySprite: {fileID: 0}
   HighlightSprite: {fileID: 21300000, guid: a3a27a5be3f9a324788d09bc9f6d175d, type: 3}
   NoHighlightSprite: {fileID: 21300000, guid: 876a32bd96c1413429e232af415b2167, type: 3}
