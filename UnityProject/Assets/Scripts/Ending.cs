@@ -6,6 +6,7 @@ using System.Text;
 using System.Linq;
 using TMPro;
 using UnityEngine.SceneManagement;
+using System;
 
 public class Ending : MonoBehaviour
 {
@@ -61,7 +62,57 @@ public class Ending : MonoBehaviour
             ShowEnding();
         }
     }
+    //private void LoadMainTextFile()
+    //{
+    //    TextAsset mainTextAsset = Resources.Load<TextAsset>("CSVFiles/" + MainTextFile1);
 
+    //    if (mainTextAsset != null)
+    //    {
+    //        string[] lines = mainTextAsset.text.Split(new[] { '\n' });
+
+    //        foreach (string line in lines)
+    //        {
+    //            string[] columns = line.Split(';');
+
+    //            if (columns.Length >= 2)
+    //            {
+    //                mainTextDictionary[columns[0]] = columns[1];
+    //            }
+    //        }
+    //    }
+    //    else
+    //    {
+    //        Debug.LogError("Main text file not found in Resources.");
+    //    }
+    //}
+
+    //private void LoadItemsTextFile()
+    //{
+    //    TextAsset itemsTextAsset = Resources.Load<TextAsset>("CSVFiles/" + ItemsTextFile1);
+
+    //    if (itemsTextAsset != null)
+    //    {
+    //        string[] lines = itemsTextAsset.text.Split(new[] { '\n' });
+    //        for (int i = 1; i < lines.Length; i++)
+    //        {
+    //            string[] columns = lines[i].Split(';');
+
+    //            if (columns.Length >= 3)
+    //            {
+    //                string item = columns[0];
+    //                string taken = columns[1];
+    //                string notTaken = columns[2];
+
+    //                itemsDictionary[item] = new ItemText(taken, notTaken);
+    //            }
+    //        }
+
+    //    }
+    //    else
+    //        {
+    //        Debug.LogError("Items text file not found in Resources.");
+    //    }
+    //}
     private void LoadMainTextFile()
     {
         string filePath = Path.Combine(Application.dataPath, "_Assets", MainTextFile);
@@ -103,13 +154,15 @@ public class Ending : MonoBehaviour
         EndingText = GenerateEndingText(inTime, Inventory.SelectedItems);
         if (EndingText == null)
             EndingText = "";
+
         GameObject EndingCanvas = GameObject.Find("EndingCanvas");
         if (EndingCanvas)
         {
             GameObject textB = EndingCanvas.transform.Find("EndingObj").gameObject;
             TextField = textB.transform.Find("EndText").gameObject.GetComponent<TMP_Text>();
         }
-        TextField.SetText(EndingText);
+        TextField.GetComponent<TextMeshProUGUI>().text = EndingText;
+
     }
     public void SetEndingType(bool inTime) //Подумывал вообще inTime сделать статичным полем,
                                               //но сперва сделал так чтобы работало вообще.
