@@ -9,6 +9,7 @@ public class KitchenMiniGame : MonoBehaviour
     public GameObject plate;
     public Rigidbody2D rb_plate;
     public GameObject[] FallingItems; // Префабы продуктов !
+    public GameObject[] badFallingItems;
     public Button CloseButton;
     public Sprite InventorySprite;
     public GameObject pauseBtn;
@@ -22,12 +23,13 @@ public class KitchenMiniGame : MonoBehaviour
     // Product Spawning
     public float spawnRate = 3f;
     private bool isSpawning = false;
-    public float minFallSpeed = 1.5f;
+    public float minFallSpeed = 10f;
     public float maxFallSpeed = 15f;
+    public float goodItemSpawnChance = 0.5f;
 
     // Score Management
     private int CurrentItems = 0;
-    int ItemsToWin = 10;
+    int ItemsToWin = 5;
 
     public static bool playerWon = false;
 
@@ -107,13 +109,16 @@ public class KitchenMiniGame : MonoBehaviour
 
     void SpawnItem()
     {
-        if (FallingItems.Length == 0)
+        bool spawnGoodItem = Random.value < goodItemSpawnChance;
+
+        GameObject[] itemsToSpawn = spawnGoodItem ? FallingItems : badFallingItems;
+        if (itemsToSpawn.Length == 0)
         {
-            Debug.LogError("No product prefabs assigned!");
-            return; 
+            Debug.LogError("No prefabs assigned for " + (spawnGoodItem ? "good" : "bad") + " items!");
+            return;
         }
-        int randomIndex = Random.Range(0, FallingItems.Length);
-        GameObject productPrefab = FallingItems[randomIndex];
+        int randomIndex = Random.Range(0, itemsToSpawn.Length);
+        GameObject productPrefab = itemsToSpawn[randomIndex];
         if (productPrefab == null)
         {
             //Debug.LogError("Product prefab at index " + randomIndex + " is null!");
@@ -127,7 +132,8 @@ public class KitchenMiniGame : MonoBehaviour
         if (newProduct != null)
         {
             ProductCollision productCollision = newProduct.AddComponent<ProductCollision>(); 
-            productCollision.scoreManage = this; 
+            productCollision.scoreManage = this;
+            productCollision.isGood = spawnGoodItem;
 
             if (Camera.main != null)
             {
@@ -144,12 +150,17 @@ public class KitchenMiniGame : MonoBehaviour
     public void IncreaseScore()
     {
         CurrentItems++;
+        //Debug.LogError(CurrentItems);
+
         CheckWin();
+
     }
 
     public void DecreaseScore()
     {
         CurrentItems--;
+       // Debug.LogError(CurrentItems);
+        if (CurrentItems < 0) CurrentItems = 0;
     }
 
 
@@ -187,6 +198,7 @@ public class ProductCollision : MonoBehaviour
     public KitchenMiniGame scoreManage;
     public float destroyY;
     public float fallSpeed;
+    public bool isGood;
     private bool isFalling = true;
 
 
@@ -199,7 +211,7 @@ public class ProductCollision : MonoBehaviour
             transform.Translate(Vector3.down * fallSpeed * Time.deltaTime); // Added Time.deltaTime to control speed
             if (transform.position.y < destroyY)
             {
-                if (scoreManage != null)
+                if (scoreManage != null && isGood)
                 {
                     scoreManage.DecreaseScore();
                 }
@@ -216,7 +228,14 @@ public class ProductCollision : MonoBehaviour
         {
             if (scoreManage != null)
             {
-                scoreManage.IncreaseScore();
+                if (isGood)
+                {
+                    scoreManage.IncreaseScore();
+                }
+                else
+                {
+                    scoreManage.DecreaseScore();
+                }
             }
             Destroy(gameObject);
         }
