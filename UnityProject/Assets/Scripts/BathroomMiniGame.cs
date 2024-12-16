@@ -13,6 +13,8 @@ public class BathroomMinigame : MonoBehaviour
     public GameObject pauseBtn;
     public GameObject inventoryBtn;
     public GameObject line;
+    public GameObject left;
+    public GameObject right;
     public SpriteRenderer lineRenderer;
     public Sprite InventorySprite;
     public GameObject plumb;
@@ -44,9 +46,11 @@ public class BathroomMinigame : MonoBehaviour
         (pauseBtn).SetActive(false);
         (inventoryBtn).SetActive(false);
         Vector3 initialScreenPos = Camera.main.WorldToScreenPoint(cursor.transform.position);
+        Vector3 initialleft = Camera.main.WorldToScreenPoint(left.transform.position);
+        Vector3 initialright = Camera.main.WorldToScreenPoint(right.transform.position);
         initialScreenX = initialScreenPos.x;
-        greenSectorStart = initialScreenX + 500f;
-        greenSectorEnd = greenSectorStart + 226f;
+        greenSectorStart = initialleft.x;
+        greenSectorEnd = initialright.x;
     }
     void Start()
 
