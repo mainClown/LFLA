@@ -40,6 +40,16 @@ public class HallMiniGame : MonoBehaviour
         {"84/28", 3},
         {"73-29", 44},
         {"568/71", 8},
+        {"9+2", 11},
+        {"14-5", 9},
+        {"9*13", 117},
+        {"345/23", 15},
+        {"89-34", 55},
+        {"14*34", 476},
+        {"56/4", 14},
+        {"19+67", 86},
+        {"567-235", 332},
+        {"4*2", 8},
     };
 
     
@@ -68,9 +78,13 @@ public class HallMiniGame : MonoBehaviour
     {
         if (Problems.Count == 0)
         {
-            Debug.Log("No more equations!");
+            CheckWin();
+            CloseHallMiniGame();
             return;
         }
+        // Debug.Log("No more equations!");
+        //  return;
+    
 
         KeyValuePair<string, int> randomEquation = Problems.ElementAt(Random.Range(0, Problems.Count));
         ÑurrentProblem = randomEquation.Key;
