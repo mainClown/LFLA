@@ -11,6 +11,8 @@ public class KitchenMiniGame : MonoBehaviour
     public GameObject[] FallingItems; // Префабы продуктов !
     public Button CloseButton;
     public Sprite InventorySprite;
+    public GameObject pauseBtn;
+    public GameObject inventoryBtn;
     // Plate Movement
     public float smoothSpeed = 50000f;
     public float maxX;
@@ -25,9 +27,18 @@ public class KitchenMiniGame : MonoBehaviour
 
     // Score Management
     private int CurrentItems = 0;
-    int ItemsToWin = 5;
-    void Start()
+    int ItemsToWin = 10;
+
+    public static bool playerWon = false;
+
+   
+        
+        void Start()
     {
+            pauseBtn = (GameObject.Find("PauseBtn"));
+        inventoryBtn = (GameObject.Find("InventoryBtn"));
+        (pauseBtn).SetActive(false);
+        (inventoryBtn).SetActive(false); 
         Camera mainCamera = Camera.main;
         Inventory.Instance.GetComponent<Canvas>().worldCamera = mainCamera;
         CloseButton.onClick.AddListener(CloseKitchenMiniGame);
@@ -103,6 +114,11 @@ public class KitchenMiniGame : MonoBehaviour
         }
         int randomIndex = Random.Range(0, FallingItems.Length);
         GameObject productPrefab = FallingItems[randomIndex];
+        if (productPrefab == null)
+        {
+            //Debug.LogError("Product prefab at index " + randomIndex + " is null!");
+            return;
+        }
         float randomX = Random.Range(minX, maxX);
         float startY = 55f; // Spawn products above the screen
         Vector3 spawnPosition = new Vector3(randomX, startY, 0);
@@ -150,6 +166,7 @@ public class KitchenMiniGame : MonoBehaviour
 
             // Добавление в инвентарь
             Inventory.Instance.AddItem(item);
+            playerWon = true;
             CloseKitchenMiniGame();
         }
     }
@@ -157,6 +174,8 @@ public class KitchenMiniGame : MonoBehaviour
     {
         Timer.Instance.ResetMiniGameTimer();
         TextBubble.Instance.StartAgain();
+        (pauseBtn).SetActive(true);
+        (inventoryBtn).SetActive(true);
         SceneManager.LoadScene("KitchenScene");
     }
 }

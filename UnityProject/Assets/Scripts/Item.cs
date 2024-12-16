@@ -29,6 +29,13 @@ public class Item : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
                 ImageObject.sprite = NoHighlightSprite;
             }
         }
+        //Если не будет работать закомментировать
+        if (HallMiniGame.playerWon || BedroomMinigame.playerWon || KitchenMiniGame.playerWon || BathroomMinigame.playerWon)
+            {
+            //    Debug.Log("Игрок победил в мини-игре!");
+            Inventory.Instance.UseItem(this);
+            HallMiniGame.playerWon = BedroomMinigame.playerWon = KitchenMiniGame.playerWon = BathroomMinigame.playerWon = false;
+        }
     }
 
     public void OnPointerEnter(PointerEventData eventData)
@@ -54,10 +61,12 @@ public class Item : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
         }
         else 
         {
-            Inventory.Instance.UseItem(this);
-            Timer.Instance.SetMiniGameTimer(MiniGameTimeSeconds);
+           
+                // Inventory.Instance.UseItem(this);
+                Timer.Instance.SetMiniGameTimer(MiniGameTimeSeconds);
             NewDoor.HideDisplay();
-            SceneManager.LoadScene(sceneToLoad);
+            SceneManager.LoadScene(sceneToLoad); 
+            
         }
     }
 }

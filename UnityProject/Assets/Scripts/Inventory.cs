@@ -48,6 +48,7 @@ public class Inventory : MonoBehaviour
     }
     public void UseItem(Item ItemObject)
     {
+        //Debug.Log(UsedItems[0]);
         UsedItems.Add(ItemObject);
     }
     public void ShowInventory()

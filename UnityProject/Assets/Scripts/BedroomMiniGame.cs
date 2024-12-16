@@ -10,12 +10,19 @@ public class BedroomMinigame : MonoBehaviour
     public Sprite InventorySprite;
     public GameObject textOrig;
     public GameObject textNew;
+    public GameObject pauseBtn;
+    public GameObject inventoryBtn;
     private int CurrentHits = 0;
     int hitsToWin = 6;
+    public static bool playerWon = false;
 
     // Start is called before the first frame update
     void Start()
     {
+        pauseBtn = (GameObject.Find("PauseBtn"));
+        inventoryBtn = (GameObject.Find("InventoryBtn"));
+        (pauseBtn).SetActive(false);
+        (inventoryBtn).SetActive(false);
         Camera mainCamera = Camera.main;
         Inventory.Instance.GetComponent<Canvas>().worldCamera = mainCamera;
         CloseButton.onClick.AddListener(CloseBedroomMiniGame);
@@ -31,6 +38,8 @@ public class BedroomMinigame : MonoBehaviour
     private void CloseBedroomMiniGame()
     {
         Timer.Instance.ResetMiniGameTimer();
+        (pauseBtn).SetActive(true);
+        (inventoryBtn).SetActive(true);
         SceneManager.LoadScene("BedroomScene");
         TextBubble.Instance.StartAgain();
     }
@@ -67,6 +76,7 @@ public class BedroomMinigame : MonoBehaviour
 
         // Добавление в инвентарь
         Inventory.Instance.AddItem(item);
+        playerWon = true;
         CloseBedroomMiniGame();
     }
     IEnumerator HideObject()
